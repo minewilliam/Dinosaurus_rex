@@ -1,1 +1,1 @@
-Dinosaurus_rex
+Dinosaurus
