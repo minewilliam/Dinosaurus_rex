@@ -1,5 +1,6 @@
 #include "header/level.h"
 #include "header/controller.h"
+#include <QtWidgets>
 
 int main(int argc, char** argv)
 {
@@ -8,3 +9,4 @@ int main(int argc, char** argv)
     level.start();
     return 0;
 }
+

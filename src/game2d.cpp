@@ -1,4 +1,5 @@
 #include "header/game2d.h"
+//Changer texture load pour image Qt
 
 Texture::Texture(char* name, Coord Size)
 {

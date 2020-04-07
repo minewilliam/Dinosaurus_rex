@@ -60,6 +60,7 @@ void Player::duck()
     std::this_thread::sleep_for(std::chrono::microseconds(500000));
 }
 
+//Changer char** et coord par Qwindow&
 bool Player::draw(char** buffer, Coord bufferSize)
 {
     bool collisionFree = true;

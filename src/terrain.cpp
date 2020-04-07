@@ -17,6 +17,7 @@ Coord Terrain::getSize()
     return _sprite2D.size;
 }
 
+//changer char** par Qwindow&
 void Terrain::draw(char** buffer)
 {
     Coord pos;

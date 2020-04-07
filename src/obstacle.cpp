@@ -54,6 +54,7 @@ void Obstacle::addInPlace(Obstacle* obs)
     next = obs;
 }
 
+//changer char** et coord par Qwindow&
 void Obstacle::draw(char** buffer, Coord bufferSize)
 {
     Coord pos;

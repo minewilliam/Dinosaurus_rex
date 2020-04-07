@@ -1,4 +1,6 @@
 #include "header/level.h"
+//Se débarasser de screen buffer. Remplacer par une fonction d'affichage succéssive.
+//Changer Usleep() par un Thread.sleep()
 
 Level::Level()
 {
@@ -102,7 +104,7 @@ void Level::run()
     while(_loop)
     {
         draw();
-        usleep(10000/(1+_score*LEVEL_ACCEL)); //Update for Qt
+        usleep(10000/(1+_score*LEVEL_ACCEL));
         _score++;
         transformTerrain({1,0});
     }

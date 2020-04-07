@@ -1,4 +1,5 @@
 #include "header/controller.h"
+//Joakim, utiliser les inputs de Qt.
 
 Controller::Controller()
 {
