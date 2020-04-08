@@ -151,6 +151,7 @@
     <ClInclude Include="header\dinosaurus.h" />
     <ClInclude Include="header\game2d.h" />
     <ClInclude Include="header\level.h" />
+    <ClInclude Include="header\list.h" />
     <ClInclude Include="header\obstacle.h" />
     <ClInclude Include="header\player.h" />
     <ClInclude Include="header\terrain.h" />

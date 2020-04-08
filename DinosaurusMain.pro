@@ -22,6 +22,7 @@ HEADERS += header/controller.h \
            header/obstacle.h \
            header/player.h \
            header/terrain.h \
+		   header/list.h \
            header/vecteur.h \
 		   header/dinosaurus.h
 SOURCES += src/controller.cpp \

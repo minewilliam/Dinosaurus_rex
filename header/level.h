@@ -2,39 +2,48 @@
 #define LEVEL_H
 #define LEVEL_ACCEL 0.00002
 
+#include <QGraphicsTextItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QtWidgets>
+#include <QTimer>
 #include "game2d.h"
 #include "terrain.h"
 #include "player.h"
 #include "obstacle.h"
 
-class Level
+class Score : public QGraphicsTextItem
 {
-    public:
+public:
+	Score(QGraphicsItem* parent = 0);
+	
+	void addScore(int scoreadd = 1) { _score += scoreadd; };
+	void resetScore(int scoreval = 0) { _score = scoreval; };
+	int getScore() { return _score; };
+private:
+	int _score = 0;
+};
+
+class Level : public QGraphicsView
+{
+public:
     Level();
-    Level(Coord size);
     ~Level();
 
-    void start();
-    void stop();
-    void setSize(Coord size);
-    Coord getSize();
+	void run();
 
     void transformTerrain(Coord v);
 
-    private:
+private:
+	QGraphicsScene* _scene;
+	Score* _score;
     Obstacle* _obstacle;
-    Player _player;
-    Terrain _terrain;
-    Coord _size;
-    int _score;
+    Player* _player;
+
+    //Terrain* _terrain;
     int _lastObstacle;
-    char** _screenBuffer;
-    bool _loop;
-    void run();
     void draw();
     void init();
-    void destroyBuffer();
-    void drawScore();
 };
 
 #endif

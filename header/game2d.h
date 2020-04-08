@@ -4,10 +4,12 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include "list.h"
 #include "vecteur.h"
 #include <random>
 #include <Windows.h>
-//#include <pthread.h> //Find Equivalent for Qt
+#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 800
 
 using namespace std;
 
@@ -23,13 +25,6 @@ struct Sprite2D
 {
 	Coord size = {0,0};
 	Coord position = {0,0};
-};
-
-template<typename T>
-struct List
-{
-	T* next = NULL;
-    T* previous = NULL;
 };
 
 struct Texture : public Sprite2D
