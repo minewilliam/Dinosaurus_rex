@@ -22,13 +22,15 @@ HEADERS += header/controller.h \
            header/obstacle.h \
            header/player.h \
            header/terrain.h \
-           header/vecteur.h
+           header/vecteur.h \
+		   header/dinosaurus.h
 SOURCES += src/controller.cpp \
            src/game2d.cpp \
            src/level.cpp \
            src/main.cpp \
            src/obstacle.cpp \
            src/player.cpp \
-           src/terrain.cpp
+           src/terrain.cpp \
+		   src/dinosaurus.cpp
 
 QT += widgets

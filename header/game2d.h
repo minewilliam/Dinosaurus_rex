@@ -6,7 +6,8 @@
 #include <ctime>
 #include "vecteur.h"
 #include <random>
-#include <pthread.h> //Find Equivalent for Qt
+#include <Windows.h>
+//#include <pthread.h> //Find Equivalent for Qt
 
 using namespace std;
 

@@ -28,26 +28,5 @@ void Texture::load()
         ifstream ifs(_name);
         string c;
         Coord pos = {0,0};
-        while(getline(ifs, c))
-        {
-            for(pos.x = 0; pos.x < size.x && pos.x < (int)c.length(); pos.x++)
-            {
-                if(c[pos.x] == '\r') c[pos.x] = ' ';
-                map[pos.x][pos.y] = c[pos.x];
-            }
-            pos.y++;
-
-            // if(pos.x >= size.x)
-            // {
-            //     pos.x = 0;
-            //     pos.y++;
-            // }
-
-            // if(pos.y <= size.y)
-            // {
-            //     map[pos.x][pos.y] = c[pos.x];
-            // }
-            // pos.x++;
-        }
     }
 }

@@ -104,7 +104,7 @@ void Level::run()
     while(_loop)
     {
         draw();
-        usleep(10000/(1+_score*LEVEL_ACCEL));
+        Sleep(10000/(1+_score*LEVEL_ACCEL));
         _score++;
         transformTerrain({1,0});
     }

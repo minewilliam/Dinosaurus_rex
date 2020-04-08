@@ -24,7 +24,7 @@ void Player::run(Player *p)
         switch (etatTemp){
             case Nothing: 
                 p->_texture = p->Player_Texture;
-                usleep(50000);
+                Sleep(50000);
                 break;
             case Jump: p->jump();
                 break;
