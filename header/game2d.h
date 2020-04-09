@@ -4,8 +4,6 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
-#include "list.h"
-#include "vecteur.h"
 #include <random>
 #include <Windows.h>
 #define SCREEN_HEIGHT 600

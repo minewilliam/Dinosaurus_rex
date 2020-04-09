@@ -3,24 +3,39 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 Texture randomCactus()
 {
     return cactusTextures[rand()%(cactusTexturesAmount)];
 }
 
-Obstacle::Obstacle()
+Obstacle::Obstacle(int speed)
 {
-
+	_speed = speed;
+	init();
 }
 
-Obstacle::Obstacle(Texture texture)
+Obstacle::Obstacle(Texture texture, int speed)
 {
+	_speed = speed;
     _texture = texture;
+	init();
 }
 
-Obstacle::~Obstacle()
+void Obstacle::init()
 {
+	setRect(0, 0, 50, 100);
+}
 
+void Obstacle::move()
+{
+	setPos(x() - _speed, y());
+}
+
+void Obstacle::pushBack(Obstacle* element)
+{
+	Obstacle* lastObstacle = this;
+	while (lastObstacle->next != nullptr) lastObstacle = lastObstacle->next;
+
+	element->previous = lastObstacle;
+	lastObstacle->next = element;
 }

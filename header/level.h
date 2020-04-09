@@ -1,6 +1,8 @@
 #ifndef LEVEL_H
 #define LEVEL_H
-#define LEVEL_ACCEL 0.00002
+#define OBSTACLE_DEFAULT_SPEED 19
+#define OBSTACLE_SPAWN_TIME 2500
+#define OBSTACLE_MIN_SPAWN_TIME 1000
 
 #include <QGraphicsTextItem>
 #include <QGraphicsScene>
@@ -14,36 +16,38 @@
 
 class Score : public QGraphicsTextItem
 {
+	Q_OBJECT
 public:
 	Score(QGraphicsItem* parent = 0);
-	
-	void addScore(int scoreadd = 1) { _score += scoreadd; };
-	void resetScore(int scoreval = 0) { _score = scoreval; };
-	int getScore() { return _score; };
+
+public slots:
+	void incrementScore();
+
 private:
+	QTimer* _scoreCounter;
 	int _score = 0;
 };
 
 class Level : public QGraphicsView
 {
+	Q_OBJECT
 public:
     Level();
     ~Level();
 
-	void run();
-
-    void transformTerrain(Coord v);
+public slots:
+	void spawnObstacle();
 
 private:
 	QGraphicsScene* _scene;
 	Score* _score;
-    Obstacle* _obstacle;
     Player* _player;
 
+	QTimer* _spawnRate;
+	QTimer* _scrollSpeed;
+	Obstacle* _obstacle = nullptr;
+
     //Terrain* _terrain;
-    int _lastObstacle;
-    void draw();
-    void init();
 };
 
 #endif

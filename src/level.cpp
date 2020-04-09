@@ -8,6 +8,16 @@ Score::Score(QGraphicsItem* parent) : QGraphicsTextItem(parent)
 	setPlainText(QString("Score: ") + QString::number(_score));
 	setDefaultTextColor(Qt::black);
 	setFont(QFont("arial", 16));
+
+	_scoreCounter = new QTimer();
+	connect(_scoreCounter, SIGNAL(timeout()), this, SLOT(incrementScore()));
+	_scoreCounter->start(50);
+}
+
+void Score::incrementScore()
+{
+	_score++;
+	setPlainText(QString("Score: ") + QString::number(_score));
 }
 
 Level::Level()
@@ -15,6 +25,12 @@ Level::Level()
 	_scene = new QGraphicsScene();
 	_score = new Score();
 	_player = new Player();
+	_spawnRate = new QTimer();
+	_scrollSpeed = new QTimer();
+
+	connect(_spawnRate, SIGNAL(timeout()), this, SLOT(spawnObstacle()));
+	_spawnRate->start(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
+	_scrollSpeed->start(OBSTACLE_DEFAULT_SPEED);
 
 	_scene->addItem(_score);
 	_scene->addItem(_player);
@@ -24,8 +40,6 @@ Level::Level()
 	setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    init();
 }
 
 Level::~Level()
@@ -33,22 +47,30 @@ Level::~Level()
 
 }
 
-void Level::init()
+void Level::spawnObstacle()
 {
+	Obstacle* newObstacle = new Obstacle();
+	if (_obstacle == nullptr)
+	{
+		_obstacle = newObstacle;
+	}
+	else
+	{
+		if (_obstacle->x() < 0)
+		{
+			delete _obstacle;
+			_obstacle = newObstacle;
+		}
+		else
+		{
+			_obstacle->pushBack(newObstacle);
+		}
+	}
 
-}
+	newObstacle->setSpeed(5);
+	newObstacle->setPos(SCREEN_WIDTH, SCREEN_HEIGHT-100);
 
-void Level::run()
-{
-
-}
-
-void Level::draw()
-{
-
-}
-
-void Level::transformTerrain(Coord v)
-{
-	
+	connect(_scrollSpeed, SIGNAL(timeout()), newObstacle, SLOT(move()));
+	_scene->addItem(newObstacle);
+	_spawnRate->setInterval(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
 }

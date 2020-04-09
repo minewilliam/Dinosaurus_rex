@@ -2,43 +2,29 @@
 #define H_LIST
 
 template<typename T>
-struct ListElement
+struct List
 {
-	~ListElement();
+	List() {};
+	~List();
 
-	void insert(T* element);
-	T* next = NULL;
-	T* previous = NULL;
+	T* next = nullptr;
+	T* previous = nullptr;
 };
 
 template<typename T>
-ListElement<T>::~ListElement()
+List<T>::~List()
 {
-	if (next != NULL)
+	if (next != nullptr)
 	{
-		if (previous != NULL)
+		if (previous != nullptr)
 		{
 			next->previous = previous;
 			previous->next = next;
 		}
 		else
 		{
-			next->previous = NULL;
+			next->previous = nullptr;
 		}
 	}
 }
-
-template<typename T>
-void ListElement<T>::insert(T* element)
-{
-	if (next != NULL)
-	{
-		next->previous = T;
-		T->next = next;
-	}
-
-	T->previous = this;
-	next = obs;
-}
-
 #endif
