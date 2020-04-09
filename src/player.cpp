@@ -55,8 +55,3 @@ void Player::shoot()
 {
 
 }
-
-void Player::spawn()
-{
-
-}

@@ -20,7 +20,6 @@ public:
 
 	void keyPressEvent(QKeyEvent* event);
 	void setFloorHeight(int floorHeight) { _floorHeight = floorHeight; };
-	void spawn();
 	int height = 100;
 
 public slots:
