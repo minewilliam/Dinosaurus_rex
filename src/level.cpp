@@ -28,18 +28,23 @@ Level::Level()
 	_spawnRate = new QTimer();
 	_scrollSpeed = new QTimer();
 
+	_player->setFlag(QGraphicsItem::ItemIsFocusable);
+	_player->setPos(50, SCREEN_HEIGHT - _player->height);
+
 	connect(_spawnRate, SIGNAL(timeout()), this, SLOT(spawnObstacle()));
 	_spawnRate->start(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
 	_scrollSpeed->start(OBSTACLE_DEFAULT_SPEED);
 
 	_scene->addItem(_score);
 	_scene->addItem(_player);
-	_scene->setSceneRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	_scene->setSceneRect(0, 0, SCREEN_WIDTH-2, SCREEN_HEIGHT-2);
 
 	setScene(_scene);
 	setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+	_player->setFocus();
 }
 
 Level::~Level()

@@ -71,9 +71,9 @@
     <CustomBuild Include="header\obstacle.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="header\player.h">
+    <CustomBuild Include="header\player.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </CustomBuild>
     <ClInclude Include="header\terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -92,6 +92,12 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="release\moc_obstacle.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_player.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_player.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
