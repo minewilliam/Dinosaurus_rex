@@ -10,9 +10,9 @@ Player::Player(QGraphicsItem* parent) : QGraphicsRectItem(parent)
 	setRect(0, 0, width, height);
 
 	connect(_jumpAnimTimer, SIGNAL(timeout()), this, SLOT(jump()));
-	connect(_duckAnimTimer, SIGNAL(timeout()), this, SLOT(resize()));
+	//connect(_duckAnimTimer, SIGNAL(timeout()), this, SLOT(resize()));
 
-	_duckAnimTimer->start(10);
+	//_duckAnimTimer->start(10);
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -31,6 +31,12 @@ void Player::keyPressEvent(QKeyEvent* event)
 		shoot();
 	}
 
+}
+
+void Player::keyReleaseEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
+		resize();
 }
 
 
@@ -60,7 +66,6 @@ void Player::jump()
 void Player::duck()
 {
 	this->setRect(0, 100-duckedHeight, width, duckedHeight);
-	_duckAnimTimer->start(200);
 }
 
 void Player::shoot()

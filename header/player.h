@@ -22,6 +22,7 @@ public:
     Player(QGraphicsItem* parent = 0);
 	
 	void keyPressEvent(QKeyEvent* event);
+	void keyReleaseEvent(QKeyEvent* event);
 	void setFloorHeight(int floorHeight) { _floorHeight = floorHeight; };
 	int height = 100;
 	int duckedHeight = 40;
