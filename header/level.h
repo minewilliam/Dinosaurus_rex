@@ -34,12 +34,13 @@ class Level : public QGraphicsView
 public:
     Level();
     ~Level();
+	QGraphicsScene* _scene;
 
 public slots:
 	void spawnObstacle();
 
 private:
-	QGraphicsScene* _scene;
+	
 	Score* _score;
     Player* _player;
 

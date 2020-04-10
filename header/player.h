@@ -12,23 +12,30 @@
 #include "game2d.h"
 #define MAX_JUMP_HEIGHT 12
 
+enum playerState{walking, ducking, jumping};
+
+
 class Player : public QObject, public QGraphicsRectItem
 {
 	Q_OBJECT
 public:
     Player(QGraphicsItem* parent = 0);
-
+	
 	void keyPressEvent(QKeyEvent* event);
 	void setFloorHeight(int floorHeight) { _floorHeight = floorHeight; };
 	int height = 100;
+	int duckedHeight = 40;
+	const int width = 50;
 
 public slots:
     void jump();
     void duck();
     void shoot();
+	void resize();
 
 private:
 	QTimer* _jumpAnimTimer;
+	QTimer* _duckAnimTimer;
 	Texture Player_Texture = Texture((char*)"assets/playerTexture.txt", { 19,9 });
 	Texture Player_Ducked = Texture((char*)"assets/playerDucked.txt", { 23,6 });
 	Texture _texture = Player_Texture;

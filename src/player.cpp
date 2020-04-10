@@ -1,10 +1,18 @@
 #include "header/player.h"
+#include "Bullet.h"
+#include"header/level.h"
 
 Player::Player(QGraphicsItem* parent) : QGraphicsRectItem(parent)
 {
 	_jumpAnimTimer = new QTimer();
-	setRect(0, 0, 50, height);
+	_duckAnimTimer = new QTimer();
+
+	setRect(0, 0, width, height);
+
 	connect(_jumpAnimTimer, SIGNAL(timeout()), this, SLOT(jump()));
+	connect(_duckAnimTimer, SIGNAL(timeout()), this, SLOT(resize()));
+
+	_duckAnimTimer->start(10);
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -17,11 +25,14 @@ void Player::keyPressEvent(QKeyEvent* event)
 	{
 		duck();
 	}
+	
 	else if (event->key() == Qt::Key_Space)
 	{
 		shoot();
 	}
+
 }
+
 
 void Player::jump()
 {
@@ -48,10 +59,17 @@ void Player::jump()
 
 void Player::duck()
 {
-
+	this->setRect(0, 100-duckedHeight, width, duckedHeight);
+	_duckAnimTimer->start(200);
 }
 
 void Player::shoot()
 {
+	Bullet * bullet = new Bullet(this->x() + width, this->y());
+	scene()->addItem(bullet);
+}
 
+void Player::resize()
+{
+	this->setRect(0, 0, width, height);
 }
