@@ -8,9 +8,7 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <QTimer>
-
 #include "game2d.h"
-#define MAX_JUMP_HEIGHT 12
 
 enum playerState{walking, ducking, jumping};
 
