@@ -1,6 +1,7 @@
 
 #include "header/Bullet.h"
 #include"header/obstacle.h"
+#include "header/Meteorite.h"
 #include"header/level.h"
 #include <QTimer>
 
@@ -27,7 +28,7 @@ void Bullet::move() {
 
 	// if it's an enemy remove both from scene but delete bullet
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
-		if (typeid(*(collidingObstacles[i])) == typeid(Obstacle)) {
+		if (typeid(*(collidingObstacles[i])) == typeid(Meteorite)) {
 			scene()->removeItem(collidingObstacles[i]);
 			scene()->removeItem(this);
 
