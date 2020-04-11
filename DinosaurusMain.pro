@@ -20,6 +20,7 @@ HEADERS += header/controller.h \
            header/game2d.h \
            header/level.h \
            header/obstacle.h \
+		   header/leaderboard.h \
            header/player.h \
            header/terrain.h \
 		   header/list.h \
@@ -30,6 +31,7 @@ SOURCES += src/controller.cpp \
            src/level.cpp \
            src/main.cpp \
            src/obstacle.cpp \
+		   src/leaderboard.cpp \
            src/player.cpp \
            src/terrain.cpp \
 		   src/dinosaurus.cpp

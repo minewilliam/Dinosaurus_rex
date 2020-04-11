@@ -36,6 +36,9 @@
     <ClCompile Include="src\game2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\leaderboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -62,6 +65,9 @@
     <ClInclude Include="header\game2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <CustomBuild Include="header\leaderboard.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="header\level.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -82,6 +88,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_leaderboard.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_leaderboard.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <ClCompile Include="debug\moc_level.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
