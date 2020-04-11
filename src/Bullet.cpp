@@ -20,7 +20,7 @@ void Bullet::move() {
 		//list of collinding items
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
 
-	// if it's an enemy destroy both
+	// if it's an enemy remove both from scene but delete bullet
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
 		if (typeid(*(collidingObstacles[i])) == typeid(Obstacle)) {
 			scene()->removeItem(collidingObstacles[i]);

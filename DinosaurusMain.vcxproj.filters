@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="src\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\controller.cpp">
@@ -56,7 +56,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Bullet.h">
+    <CustomBuild Include="header\Bullet.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <ClInclude Include="header\controller.h">

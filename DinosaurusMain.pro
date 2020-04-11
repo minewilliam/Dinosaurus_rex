@@ -25,7 +25,7 @@ HEADERS += header/controller.h \
 		   header/list.h \
            header/vecteur.h \
                    header/dinosaurus.h \
-           Bullet.h
+           header/Bullet.h
 SOURCES += src/controller.cpp \
            src/game2d.cpp \
            src/level.cpp \
@@ -34,6 +34,6 @@ SOURCES += src/controller.cpp \
            src/player.cpp \
            src/terrain.cpp \
                    src/dinosaurus.cpp\
-           Bullet.cpp
+           src/Bullet.cpp
 
 QT += widgets

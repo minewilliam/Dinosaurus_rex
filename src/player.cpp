@@ -1,18 +1,15 @@
 #include "header/player.h"
-#include "Bullet.h"
+#include "header/Bullet.h"
 #include"header/level.h"
 
 Player::Player(QGraphicsItem* parent) : QGraphicsRectItem(parent)
 {
 	_jumpAnimTimer = new QTimer();
-	_duckAnimTimer = new QTimer();
 
 	setRect(0, 0, width, height);
 
 	connect(_jumpAnimTimer, SIGNAL(timeout()), this, SLOT(jump()));
-	//connect(_duckAnimTimer, SIGNAL(timeout()), this, SLOT(resize()));
-
-	//_duckAnimTimer->start(10);
+	
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -23,6 +20,7 @@ void Player::keyPressEvent(QKeyEvent* event)
 	}
 	else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
 	{
+		isDucked = true;
 		duck();
 	}
 	
@@ -30,7 +28,6 @@ void Player::keyPressEvent(QKeyEvent* event)
 	{
 		shoot();
 	}
-
 }
 
 void Player::keyReleaseEvent(QKeyEvent * event)
@@ -66,15 +63,23 @@ void Player::jump()
 void Player::duck()
 {
 	this->setRect(0, 100-duckedHeight, width, duckedHeight);
+	
 }
 
 void Player::shoot()
 {
-	Bullet * bullet = new Bullet(this->x() + width, this->y());
+	int temp = 0;
+
+	if (isDucked)
+		temp = height - duckedHeight;
+
+	Bullet * bullet = new Bullet(this->x() + width, this->y() + temp);
 	scene()->addItem(bullet);
 }
 
 void Player::resize()
 {
 	this->setRect(0, 0, width, height);
+	isDucked = false;
+
 }

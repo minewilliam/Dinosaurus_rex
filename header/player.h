@@ -26,7 +26,8 @@ public:
 	void setFloorHeight(int floorHeight) { _floorHeight = floorHeight; };
 	int height = 100;
 	int duckedHeight = 40;
-	const int width = 50;
+	int width = 50;
+	bool isDucked = false;
 
 public slots:
     void jump();
@@ -36,7 +37,6 @@ public slots:
 
 private:
 	QTimer* _jumpAnimTimer;
-	QTimer* _duckAnimTimer;
 	Texture Player_Texture = Texture((char*)"assets/playerTexture.txt", { 19,9 });
 	Texture Player_Ducked = Texture((char*)"assets/playerDucked.txt", { 23,6 });
 	Texture _texture = Player_Texture;
