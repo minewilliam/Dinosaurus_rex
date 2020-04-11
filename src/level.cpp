@@ -46,7 +46,7 @@ Level::Level()
 	_scene->setSceneRect(0, 0, SCREEN_WIDTH-2, SCREEN_HEIGHT-2);
 
 	//add a background
-	setBackgroundBrush(QBrush(QImage("background.png")));
+	setBackgroundBrush(QBrush(QImage("background1.png")));
 
 	setScene(_scene);
 	setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
