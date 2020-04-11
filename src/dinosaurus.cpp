@@ -2,10 +2,13 @@
 
 DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 {
-	mainWindow->menuBar()->addMenu("&Files");
-	scene->addWidget(scoreLabel);
-	mainWindow->setCentralWidget(view);
-	mainWindow->show();
+	_mainWindow = new QMainWindow();
+	_level = new Level();
+	_leaderboard = new Leaderboard();
 
+	//MainWindow setup:
+	_mainWindow->menuBar()->addMenu("&Files");
+	_mainWindow->setCentralWidget(_level);
+	_mainWindow->show();
 	exec();
 }

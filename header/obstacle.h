@@ -1,6 +1,10 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
+
 #include "game2d.h"
+#include "list.h"
+#include <QGraphicsRectItem>
+#include <QObject>
 
 Texture randomCactus();
 
@@ -16,22 +20,21 @@ Texture const cactusTextures[] {
 const int cactusTexturesAmount = sizeof(cactusTextures)/sizeof(Texture);
 
 //draw(char** ,Coord size) Changer char**. Probablement par une référence à la fenêtre Qt. draw(Qwindow& window)
-class Obstacle : public List<Obstacle>
+class Obstacle : public QObject, public List<Obstacle>, public QGraphicsRectItem
 {
-private:
-	Texture _texture = cactusTextures[0];
+	Q_OBJECT
 public:
-	Obstacle();
-	Obstacle(Texture texture);
-	~Obstacle();
+	Obstacle(int speed = 0);
+	Obstacle(Texture texture, int speed = 0);
+	void setSpeed(int speed) { _speed = speed; };
+	void pushBack(Obstacle* element);
 
-	bool isFlying();
-	Coord getSize();
-	Coord getPos();
-	void addInPlace(Obstacle* obs);
-	void setPos(Coord pos);
-	void transform(Coord newposition);
-	void draw(char** buffer, Coord bufferSize);
+public slots:
+	void move();
+
+private:
+	void init();
+	Texture _texture = cactusTextures[0];
+	int _speed;
 };
-
 #endif
