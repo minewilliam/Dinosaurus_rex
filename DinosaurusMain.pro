@@ -4,7 +4,7 @@
 
 TEMPLATE = vcapp
 TARGET = DinosaurusMain
-#INCLUDEPATH += .
+INCLUDEPATH += C:\Users\faund\Desktop\Uni\S2\APP7\Problematique\Dinosaurus_rex
 
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -27,6 +27,8 @@ HEADERS += header/controller.h \
            header/vecteur.h \
            header/dinosaurus.h \
 	   header/mainMenu.h
+	   header/Meteorite.h
+           header/Bullet.h \
 SOURCES += src/controller.cpp \
            src/game2d.cpp \
            src/level.cpp \
@@ -35,7 +37,9 @@ SOURCES += src/controller.cpp \
 		   src/leaderboard.cpp \
            src/player.cpp \
            src/terrain.cpp \
-	   src/dinosaurus.cpp \
+	   src/Meteorite.cpp
+           src/Bullet.cpp \
 	   src/mainMenu.cpp	
+	   src/dinosaurus.cpp \
 
 QT += widgets

@@ -27,6 +27,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meteorite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -59,6 +65,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="header\Bullet.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="header\Meteorite.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <ClInclude Include="header\controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -95,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="debug\moc_leaderboard.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -105,6 +118,18 @@
     </ClCompile>
     <ClCompile Include="release\moc_dinosaurus.cpp">
 >>>>>>> Phil
+=======
+    <ClCompile Include="debug\moc_Bullet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_Bullet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_Meteorite.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_Meteorite.cpp">
+>>>>>>> Joaquin
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="debug\moc_level.cpp">

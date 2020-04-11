@@ -1,10 +1,20 @@
 #include "header/player.h"
+#include "header/Bullet.h"
+#include"header/level.h"
 
-Player::Player(QGraphicsItem* parent) : QGraphicsRectItem(parent)
+Player::Player(QGraphicsItem* parent) : QGraphicsPixmapItem(parent)
 {
 	_jumpAnimTimer = new QTimer();
-	setRect(0, 0, 50, height);
+
+	//setRect(0, 0, width, height);
+	QPixmap imagePlayer("Dino.png");
+	//QPixmap playerSized = imagePlayer.scaled(width, height);
+
+	setPixmap(imagePlayer);
+	
+
 	connect(_jumpAnimTimer, SIGNAL(timeout()), this, SLOT(jump()));
+	
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -15,13 +25,22 @@ void Player::keyPressEvent(QKeyEvent* event)
 	}
 	else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
 	{
+		isDucked = true;
 		duck();
 	}
+	
 	else if (event->key() == Qt::Key_Space)
 	{
 		shoot();
 	}
 }
+
+void Player::keyReleaseEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
+		resize();
+}
+
 
 void Player::jump()
 {
@@ -48,10 +67,42 @@ void Player::jump()
 
 void Player::duck()
 {
+	int xCoord = this->x();
+	int yCoord = this->y();
+	//this->setRect(0, 100-duckedHeight, width, duckedHeight);
+	QPixmap imagePlayer("Dino.png");
+	QPixmap playerSized = imagePlayer.scaled(QSize(width, duckedHeight));
 
+	setPos(x(),y()+(height-duckedHeight));
+
+
+	this->setPixmap(playerSized);
+	
 }
 
 void Player::shoot()
 {
+	int temp = 0;
+
+	if (isDucked)
+		temp = height - duckedHeight;
+
+	Bullet * bullet = new Bullet(this->x() + width, this->y());
+	scene()->addItem(bullet);
+}
+
+void Player::resize()
+{
+	//this->setRect(0, 0, width, height);
+	QPixmap imagePlayer("Dino.png");
+	QPixmap playerSized = imagePlayer.scaled(QSize(width, height));
+
+
+	setPos(x(), y() - (height - duckedHeight));
+
+	this->setPixmap(playerSized);
+	
+	
+	isDucked = false;
 
 }
