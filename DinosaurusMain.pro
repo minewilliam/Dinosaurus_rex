@@ -23,12 +23,12 @@ HEADERS += header/controller.h \
 		   header/leaderboard.h \
            header/player.h \
            header/terrain.h \
-	   header/list.h \
+			header/list.h \
            header/vecteur.h \
            header/dinosaurus.h \
-	   header/mainMenu.h
-	   header/Meteorite.h
-           header/Bullet.h \
+			header/mainMenu.h \
+			header/Meteorite.h \
+           header/Bullet.h 
 SOURCES += src/controller.cpp \
            src/game2d.cpp \
            src/level.cpp \
@@ -37,9 +37,9 @@ SOURCES += src/controller.cpp \
 		   src/leaderboard.cpp \
            src/player.cpp \
            src/terrain.cpp \
-	   src/Meteorite.cpp
+		   src/Meteorite.cpp \
            src/Bullet.cpp \
-	   src/mainMenu.cpp	
-	   src/dinosaurus.cpp \
+		   src/mainMenu.cpp	\
+		   src/dinosaurus.cpp 
 
 QT += widgets
