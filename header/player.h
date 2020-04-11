@@ -1,34 +1,51 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+#define PLAYER_JUMP_REFRESHRATE 20 //20ms
 
-#include <thread>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsItem>
+#include <QObject>
+#include <QKeyEvent>
+#include <QTimer>
+
 #include "game2d.h"
-#include "controller.h"
 #define MAX_JUMP_HEIGHT 12
 
-class Player
+enum playerState{walking, ducking, jumping};
+
+
+class Player : public QObject, public QGraphicsPixmapItem
 {
-    private:
-    Texture Player_Texture = Texture((char*)"assets/playerTexture.txt",{19,9});
-    Texture Player_Ducked = Texture((char*)"assets/playerDucked.txt",{23,6});
-    Texture _texture = Player_Texture;
-    thread _playerThread;
-    Controller _Controller=Controller();
+	Q_OBJECT
+public:
+    Player(QGraphicsItem* parent = 0);
+	
+	void keyPressEvent(QKeyEvent* event);
+	void keyReleaseEvent(QKeyEvent* event);
+	void setFloorHeight(int floorHeight) { _floorHeight = floorHeight; };
+	int height = 100;
+	int duckedHeight = 40;
+	int width = 50;
+	bool isDucked = false;
 
-    public:
-    Player();
-    ~Player();
-
-    static void run(Player *p);
+public slots:
     void jump();
     void duck();
     void shoot();
+	void resize();
 
-	Coord getSize();
-    Coord getPos();
-    void setPos(Coord pos);
+private:
+	QTimer* _jumpAnimTimer;
+	Texture Player_Texture = Texture((char*)"assets/playerTexture.txt", { 19,9 });
+	Texture Player_Ducked = Texture((char*)"assets/playerDucked.txt", { 23,6 });
+	Texture _texture = Player_Texture;
+	int _floorHeight = 0;
+	float _yVector = 0.0f;
+	int _jumpFrameCount = 0;
 
-    bool draw(char** buffer, Coord bufferSize);
+	const float _gravity = 1.0f;
+	const float _jumpImpulse = 24.0f;
 };
 
 #endif

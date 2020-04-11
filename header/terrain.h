@@ -1,11 +1,12 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
+#include <QObject>
 #include "game2d.h"
 
-class Terrain
+class Terrain : public QObject
 {
-    public:
+public:
     Terrain();
     Terrain(Coord size, char* textureName);
     ~Terrain() {}
@@ -15,7 +16,7 @@ class Terrain
     void draw(char** stream);
     void setPos(Coord pos);
 
-    private:
+private:
     Texture _BackgroundTexture = Texture((char*)" ",{0,0});
     Sprite2D _sprite2D;
 };

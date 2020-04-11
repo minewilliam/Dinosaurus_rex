@@ -1,14 +1,9 @@
-#pragma once
-
 #ifndef H_DINOSAURUS
 #define H_DINOSAURUS
+
 #include "level.h"
-#include "controller.h"
 #include <QApplication.h>
 #include <QtWidgets>
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsRectItem>
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
@@ -19,14 +14,10 @@ class DinosaurusApp : public QApplication
 public:
 	DinosaurusApp(int &argc, char** argv);
 	~DinosaurusApp() {};
-	QMainWindow& getMainWindow() { return *mainWindow; };
-	void setMainWindow(QMainWindow& window) { mainWindow = new QMainWindow(mainWindow); };
+	QMainWindow& getMainWindow() { return *_mainWindow; };
 private:
-	QMainWindow* mainWindow = new QMainWindow();
-	QLabel* scoreLabel = new QLabel("Score: ");
-	QGraphicsScene* scene = new QGraphicsScene();
-	QGraphicsView* view = new QGraphicsView(scene);
-
+	QMainWindow* _mainWindow;
+	Level* _level;
 };
 
 #endif // !H_DINOSAURUS

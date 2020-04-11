@@ -1,40 +1,59 @@
 #ifndef LEVEL_H
 #define LEVEL_H
-#define LEVEL_ACCEL 0.00002
+#define OBSTACLE_DEFAULT_SPEED 19
+#define OBSTACLE_SPAWN_TIME 2500
+#define OBSTACLE_MIN_SPAWN_TIME 1000
+#define METEORITE_SPAWN_TIME 4000
+#define METEORITE_MIN_SPAWN_TIME 2000
 
+#include <QGraphicsTextItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QtWidgets>
+#include <QTimer>
 #include "game2d.h"
 #include "terrain.h"
 #include "player.h"
 #include "obstacle.h"
+#include "header/Meteorite.h"
 
-class Level
+class Score : public QGraphicsTextItem
 {
-    public:
+	Q_OBJECT
+public:
+	Score(QGraphicsItem* parent = 0);
+
+public slots:
+	void incrementScore();
+
+private:
+	QTimer* _scoreCounter;
+	int _score = 0;
+};
+
+class Level : public QGraphicsView
+{
+	Q_OBJECT
+public:
     Level();
-    Level(Coord size);
     ~Level();
+	QGraphicsScene* _scene;
 
-    void start();
-    void stop();
-    void setSize(Coord size);
-    Coord getSize();
+public slots:
+	void spawnObstacle();
+	void spawnMeteorite();
+private:
+	
+	Score* _score;
+    Player* _player;
 
-    void transformTerrain(Coord v);
+	QTimer* _spawnRate;
+	QTimer* _scrollSpeed;
+	Obstacle* _obstacle = nullptr;
+	QTimer *_spawnRateMeteorite;
+	Meteorite* _Meteorite = nullptr;
 
-    private:
-    Obstacle* _obstacle;
-    Player _player;
-    Terrain _terrain;
-    Coord _size;
-    int _score;
-    int _lastObstacle;
-    char** _screenBuffer;
-    bool _loop;
-    void run();
-    void draw();
-    void init();
-    void destroyBuffer();
-    void drawScore();
+    //Terrain* _terrain;
 };
 
 #endif

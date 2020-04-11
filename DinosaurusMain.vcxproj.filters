@@ -27,7 +27,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meteorite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dinosaurus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\game2d.cpp">
@@ -48,37 +57,73 @@
     <ClCompile Include="src\terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dinosaurus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <CustomBuild Include="header\Bullet.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="header\Meteorite.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <ClInclude Include="header\controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\dinosaurus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\game2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\level.h">
+    <CustomBuild Include="header\level.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="header\list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\obstacle.h">
+    <CustomBuild Include="header\obstacle.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header\player.h">
+    </CustomBuild>
+    <CustomBuild Include="header\player.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </CustomBuild>
     <ClInclude Include="header\terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\vecteur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\dinosaurus.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_Bullet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_Bullet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_Meteorite.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_Meteorite.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_level.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_level.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_obstacle.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_obstacle.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_player.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_player.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>

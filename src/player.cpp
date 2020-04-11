@@ -1,109 +1,108 @@
 #include "header/player.h"
+#include "header/Bullet.h"
+#include"header/level.h"
 
-Player::Player()
+Player::Player(QGraphicsItem* parent) : QGraphicsPixmapItem(parent)
 {
-    _playerThread = std::thread(run,this);
+	_jumpAnimTimer = new QTimer();
+
+	//setRect(0, 0, width, height);
+	QPixmap imagePlayer("Dino.png");
+	//QPixmap playerSized = imagePlayer.scaled(width, height);
+
+	setPixmap(imagePlayer);
+	
+
+	connect(_jumpAnimTimer, SIGNAL(timeout()), this, SLOT(jump()));
+	
 }
 
-Player::~Player()
+void Player::keyPressEvent(QKeyEvent* event)
 {
-
+	if (event->key() == Qt::Key_Up || event->key() == Qt::Key_W)
+	{
+		_jumpAnimTimer->start(PLAYER_JUMP_REFRESHRATE);
+	}
+	else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
+	{
+		isDucked = true;
+		duck();
+	}
+	
+	else if (event->key() == Qt::Key_Space)
+	{
+		shoot();
+	}
 }
 
-//Thread
-void Player::run(Player *p)
+void Player::keyReleaseEvent(QKeyEvent * event)
 {
-    while(1)
-    {
-        int etatTemp = Nothing;
-
-        p->_Controller.ReadPhoneme();
-        etatTemp=p->_Controller.getEtat();
-        p->_Controller.resetPhoneme();
-
-        switch (etatTemp){
-            case Nothing: 
-                p->_texture = p->Player_Texture;
-                Sleep(50000);
-                break;
-            case Jump: p->jump();
-                break;
-            case Duck: p->duck();
-                break;
-            case Quit: exit(0);
-                break;
-            default:
-                break;
-            }
-    }
+	if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
+		resize();
 }
+
 
 void Player::jump()
 {
-    int positionY = _texture.position.y;
-    for(; _texture.position.y > positionY-MAX_JUMP_HEIGHT; --_texture.position.y)
-    {
-        float accel = (float)(_texture.position.y)/(positionY-MAX_JUMP_HEIGHT);
-        std::this_thread::sleep_for(std::chrono::microseconds((int)(35000/accel)));
-    }
+	if (y() == 500) //On the floor
+	{
+		_yVector = _jumpImpulse;
+		_jumpFrameCount = 0;
+	}
 
-    for(; _texture.position.y < positionY; ++_texture.position.y)
-    {
-        float accel = (float)(_texture.position.y)/(positionY)+0.15;
-        std::this_thread::sleep_for(std::chrono::microseconds((int)(25000/accel)));
-    }
+	if (y() > 500)
+	{
+		_yVector = 0;
+		_jumpFrameCount = 0;
+		setPos(x(), 500);
+		_jumpAnimTimer->stop();
+	}
+	else
+	{
+		_yVector -= _gravity * _jumpFrameCount * PLAYER_JUMP_REFRESHRATE / 1000;
+		setPos(x(), y() - _yVector);
+		_jumpFrameCount += PLAYER_JUMP_REFRESHRATE / 2;
+	}
 }
 
 void Player::duck()
 {
-    _texture = Player_Ducked;
-    std::this_thread::sleep_for(std::chrono::microseconds(500000));
+	int xCoord = this->x();
+	int yCoord = this->y();
+	//this->setRect(0, 100-duckedHeight, width, duckedHeight);
+	QPixmap imagePlayer("Dino.png");
+	QPixmap playerSized = imagePlayer.scaled(QSize(width, duckedHeight));
+
+	setPos(x(),y()+(height-duckedHeight));
+
+
+	this->setPixmap(playerSized);
+	
 }
 
-//Changer char** et coord par Qwindow&
-bool Player::draw(char** buffer, Coord bufferSize)
+void Player::shoot()
 {
-    bool collisionFree = true;
-    Coord pos;
-    Coord tranformedPos = _texture.position+_texture.size;
+	int temp = 0;
 
-    for(pos.y = _texture.position.y; pos.y < tranformedPos.y; pos.y++)
-    {
-        for(pos.x = _texture.position.x; pos.x < tranformedPos.x; pos.x++)
-        {
-            int textureX = pos.x-_texture.position.x;
-            int textureY = pos.y-_texture.position.y;
+	if (isDucked)
+		temp = height - duckedHeight;
 
-            if(textureX >= 0 && textureY >= 0)
-            {
-                char c = _texture.map[textureX][textureY];
-
-                if(c != ' ')
-                {
-                    if(pos.x <= bufferSize.x && pos.y <= bufferSize.y && pos.x > 0 && pos.y > 0)
-                    {
-                        if(buffer[pos.x-1][pos.y-1] != ' ' && pos.y != bufferSize.y) collisionFree = false;
-                        buffer[pos.x-1][pos.y-1] = c;
-                    }
-                }
-            }
-        }
-    }
-    return collisionFree;
+	Bullet * bullet = new Bullet(this->x() + width, this->y());
+	scene()->addItem(bullet);
 }
 
-Coord Player::getSize()
+void Player::resize()
 {
-    return _texture.size;
-}
+	//this->setRect(0, 0, width, height);
+	QPixmap imagePlayer("Dino.png");
+	QPixmap playerSized = imagePlayer.scaled(QSize(width, height));
 
-void Player::setPos(Coord pos)
-{
-    Player_Texture.position = pos;
-    Player_Ducked.position = {pos.x, pos.y+(Player_Texture.size.y-Player_Ducked.size.y)};
-}
 
-Coord Player::getPos()
-{
-    return _texture.position;
+	setPos(x(), y() - (height - duckedHeight));
+
+	this->setPixmap(playerSized);
+	
+	
+	isDucked = false;
+
 }
