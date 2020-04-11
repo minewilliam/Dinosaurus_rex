@@ -3,6 +3,8 @@
 #define OBSTACLE_DEFAULT_SPEED 19
 #define OBSTACLE_SPAWN_TIME 2500
 #define OBSTACLE_MIN_SPAWN_TIME 1000
+#define METEORITE_SPAWN_TIME 4000
+#define METEORITE_MIN_SPAWN_TIME 2000
 
 #include <QGraphicsTextItem>
 #include <QGraphicsScene>
@@ -13,6 +15,7 @@
 #include "terrain.h"
 #include "player.h"
 #include "obstacle.h"
+#include "header/Meteorite.h"
 
 class Score : public QGraphicsTextItem
 {
@@ -38,7 +41,7 @@ public:
 
 public slots:
 	void spawnObstacle();
-
+	void spawnMeteorite();
 private:
 	
 	Score* _score;
@@ -47,6 +50,8 @@ private:
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
 	Obstacle* _obstacle = nullptr;
+	QTimer *_spawnRateMeteorite;
+	Meteorite* _Meteorite = nullptr;
 
     //Terrain* _terrain;
 };
