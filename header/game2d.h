@@ -1,8 +1,6 @@
 #ifndef GAME2D_H
 #define GAME2D_H
 
-#include <fstream>
-#include <iostream>
 #include <ctime>
 #include <random>
 #include <Windows.h>
