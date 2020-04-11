@@ -6,7 +6,12 @@
 
 Bullet::Bullet(int x, int y) {
 	// drew the rect
-	setRect(x, y, 50, 10);
+	//setRect(x, y, 50, 10);
+
+	QPixmap imageBullet("fireball.png");
+	//QPixmap playerSized = imagePlayer.scaled(width, height);
+	setPos(x, y);
+	setPixmap(imageBullet);
 
 	// connect timeout to move
 	QTimer * timer = new QTimer();

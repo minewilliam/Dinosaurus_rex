@@ -1,5 +1,7 @@
 #include "header/level.h"
 #include <QFont>
+#include <QBrush>
+#include <QImage>
 //Se débarasser de screen buffer. Remplacer par une fonction d'affichage succéssive.
 //Changer Usleep() par un Thread.sleep()
 
@@ -38,6 +40,9 @@ Level::Level()
 	_scene->addItem(_score);
 	_scene->addItem(_player);
 	_scene->setSceneRect(0, 0, SCREEN_WIDTH-2, SCREEN_HEIGHT-2);
+
+	//add a background
+	setBackgroundBrush(QBrush(QImage("background.png")));
 
 	setScene(_scene);
 	setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);

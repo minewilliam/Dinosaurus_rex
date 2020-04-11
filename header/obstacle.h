@@ -4,6 +4,7 @@
 #include "game2d.h"
 #include "list.h"
 #include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 
 Texture randomCactus();
@@ -20,7 +21,7 @@ Texture const cactusTextures[] {
 const int cactusTexturesAmount = sizeof(cactusTextures)/sizeof(Texture);
 
 //draw(char** ,Coord size) Changer char**. Probablement par une référence à la fenêtre Qt. draw(Qwindow& window)
-class Obstacle : public QObject, public List<Obstacle>, public QGraphicsRectItem
+class Obstacle : public QObject, public List<Obstacle>, public QGraphicsPixmapItem
 {
 	Q_OBJECT
 public:
@@ -28,6 +29,8 @@ public:
 	Obstacle(Texture texture, int speed = 0);
 	void setSpeed(int speed) { _speed = speed; };
 	void pushBack(Obstacle* element);
+	int width = 50;
+	int height = 100;
 
 public slots:
 	void move();

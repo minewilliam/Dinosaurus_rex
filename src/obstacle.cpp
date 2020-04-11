@@ -24,7 +24,11 @@ Obstacle::Obstacle(Texture texture, int speed)
 
 void Obstacle::init()
 {
-	setRect(0, 0, 50, 100);
+	//setRect(0, 0, width, height);
+	QPixmap imageCactus("Cactus1.png");
+	//QPixmap playerSized = imagePlayer.scaled(width, height);
+	setPixmap(imageCactus);
+
 }
 
 void Obstacle::move()
