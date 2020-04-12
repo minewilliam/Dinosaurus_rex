@@ -1,10 +1,7 @@
 #include "header/level.h"
-#include "header/Meteorite.h"
 #include <QFont>
 #include <QBrush>
 #include <QImage>
-//Se débarasser de screen buffer. Remplacer par une fonction d'affichage succéssive.
-//Changer Usleep() par un Thread.sleep()
 
 Score::Score(QGraphicsItem* parent) : QGraphicsTextItem(parent)
 {
@@ -60,6 +57,7 @@ Level::~Level()
 {
 
 }
+
 void Level::spawnMeteorite()
 {
 	Meteorite* newMeteorite = new Meteorite();

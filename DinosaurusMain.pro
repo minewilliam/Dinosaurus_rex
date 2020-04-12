@@ -17,28 +17,24 @@ CONFIG += warn_on qt debug windows console
 
 # Input
 HEADERS += header/controller.h \
-           header/game2d.h \
            header/level.h \
            header/obstacle.h \
 		   header/leaderboard.h \
            header/player.h \
-           header/terrain.h \
 			header/list.h \
            header/vecteur.h \
            header/dinosaurus.h \
 			header/mainMenu.h \
-			header/Meteorite.h \
-           header/Bullet.h 
+			header/meteorite.h \
+           header/bullet.h 
 SOURCES += src/controller.cpp \
-           src/game2d.cpp \
            src/level.cpp \
            src/main.cpp \
            src/obstacle.cpp \
 		   src/leaderboard.cpp \
            src/player.cpp \
-           src/terrain.cpp \
-		   src/Meteorite.cpp \
-           src/Bullet.cpp \
+		   src/meteorite.cpp \
+           src/bullet.cpp \
 		   src/mainMenu.cpp	\
 		   src/dinosaurus.cpp 
 

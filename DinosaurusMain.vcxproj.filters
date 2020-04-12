@@ -27,19 +27,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Bullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Meteorite.cpp">
+    <ClCompile Include="src\bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\dinosaurus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\leaderboard.cpp">
@@ -54,21 +48,18 @@
     <ClCompile Include="src\mainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\meteorite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\obstacle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="header\Bullet.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="header\Meteorite.h">
+    <CustomBuild Include="header\bullet.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <ClInclude Include="header\controller.h">
@@ -77,9 +68,6 @@
     <CustomBuild Include="header\dinosaurus.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="header\game2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="header\leaderboard.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -92,44 +80,36 @@
     <CustomBuild Include="header\mainMenu.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="header\meteorite.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="header\obstacle.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="header\player.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="header\terrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="header\vecteur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <ClCompile Include="debug\moc_leaderboard.cpp">
+    <ClCompile Include="debug\moc_bullet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="release\moc_leaderboard.cpp">
-=======
+    <ClCompile Include="release\moc_bullet.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <ClCompile Include="debug\moc_dinosaurus.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="release\moc_dinosaurus.cpp">
->>>>>>> Phil
-=======
-    <ClCompile Include="debug\moc_Bullet.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="release\moc_Bullet.cpp">
+    <ClCompile Include="debug\moc_leaderboard.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="debug\moc_Meteorite.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="release\moc_Meteorite.cpp">
->>>>>>> Joaquin
+    <ClCompile Include="release\moc_leaderboard.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="debug\moc_level.cpp">
@@ -142,6 +122,12 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="release\moc_mainMenu.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_meteorite.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_meteorite.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="debug\moc_obstacle.cpp">

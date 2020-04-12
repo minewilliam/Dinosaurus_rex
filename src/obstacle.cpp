@@ -1,24 +1,10 @@
 #include "header/obstacle.h"
-#include "header/level.h"
-#include <fstream>
-#include <iostream>
-#include <string>
-
-Texture randomCactus()
-{
-    return cactusTextures[rand()%(cactusTexturesAmount)];
-}
+#include "header/player.h"
+#include <QGraphicsScene>
 
 Obstacle::Obstacle(int speed)
 {
 	_speed = speed;
-	init();
-}
-
-Obstacle::Obstacle(Texture texture, int speed)
-{
-	_speed = speed;
-    _texture = texture;
 	init();
 }
 

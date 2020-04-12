@@ -4,7 +4,6 @@
 DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 {
 	_mainWindow = new QMainWindow();
-	_level = new Level();
 	// set up mainmenu
 	MainMenuWidget* mainmenu = new MainMenuWidget();
 	_mainWindow->setCentralWidget(mainmenu);
@@ -12,12 +11,7 @@ DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 	connect(mainmenu->buttonLeaderBoard, SIGNAL(clicked()), this, SLOT(ActivateLeaderBoard()));
 	connect(mainmenu->buttonQuit, SIGNAL(clicked()), this, SLOT(Quit()));
 	_mainWindow->setStyleSheet("background-image:url(background.png);");
-	//_mainWindow->setFixedSize();
-	//MainWindow setup:
-	/*
-	_mainWindow->menuBar()->addMenu("&Files");
-	_mainWindow->setCentralWidget(_level);
-	*/
+
 	_mainWindow->show();
 	
 	exec();
@@ -45,8 +39,7 @@ void DinosaurusApp::SetUpMenu()
 }
 void DinosaurusApp::SetUpGame() 
 {
-	_mainWindow->menuBar()->addMenu("&Files");
-	_mainWindow->setFixedSize(1000, 800);
+	_level = new Level();
 	_mainWindow->setCentralWidget(_level);
 }
 void DinosaurusApp::ActivateLeaderBoard() 

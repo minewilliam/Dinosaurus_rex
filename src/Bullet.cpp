@@ -1,7 +1,7 @@
 
-#include "header/Bullet.h"
+#include "header/bullet.h"
 #include"header/obstacle.h"
-#include "header/Meteorite.h"
+#include "header/meteorite.h"
 #include"header/level.h"
 #include <QTimer>
 

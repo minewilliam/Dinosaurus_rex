@@ -3,7 +3,7 @@
 int main(int argc, char** argv)
 {
 	srand(time(NULL));
-	DinosaurusApp* Dino = new DinosaurusApp(argc, argv);
+	new DinosaurusApp(argc, argv);
 
     return 0;
 }

@@ -1,4 +1,5 @@
 #include "header/leaderboard.h"
+#include <fstream>
 
 QVariant LeaderboardTableModel::data(const QModelIndex &index, int role) const
 {

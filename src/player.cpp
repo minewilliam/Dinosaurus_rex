@@ -1,5 +1,5 @@
 #include "header/player.h"
-#include "header/Bullet.h"
+#include "header/bullet.h"
 #include"header/level.h"
 
 Player::Player(QGraphicsItem* parent) : QGraphicsPixmapItem(parent)
