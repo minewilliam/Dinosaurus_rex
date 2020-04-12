@@ -28,8 +28,8 @@ public slots:
 private:
 	QMainWindow* _mainWindow;
 	Level* _level;
-	Leaderboard* _leaderboard;
 	QString _name = "";
+	LeaderboardTable* _leaderboard;
 };
 
 #endif // !H_DINOSAURUS

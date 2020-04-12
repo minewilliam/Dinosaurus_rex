@@ -139,7 +139,11 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 
 	_tableData[index] = entry;
 	_tableData[index].initialized = true;
-	if(_written) selectRow(index);
+	if (_written)
+	{
+		selectRow(index);
+		_leaderboardTableModel.insert(_tableData[index]);
+	}
 }
 
 Leaderboard::Leaderboard()
