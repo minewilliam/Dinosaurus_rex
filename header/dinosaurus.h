@@ -10,6 +10,7 @@
 #include <QMenuBar>
 #include <QLayout>
 #include <QObject>
+#include <QString>
 
 class DinosaurusApp : public QApplication
 {
@@ -28,6 +29,7 @@ private:
 	QMainWindow* _mainWindow;
 	Level* _level;
 	Leaderboard* _leaderboard;
+	QString _name = "";
 };
 
 #endif // !H_DINOSAURUS
