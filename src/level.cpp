@@ -30,7 +30,8 @@ Level::Level()
 	_spawnCloud = new QTimer();
 	_spawnRateMeteorite = new QTimer();
 	_player->setFlag(QGraphicsItem::ItemIsFocusable);
-	_player->setPos(50, SCREEN_HEIGHT - _player->height);
+	_player->setPos(50, SCREEN_HEIGHT - _player->getHeight());
+	_player->setFloorHeight(SCREEN_HEIGHT-2);
 
 	connect(_spawnRate, SIGNAL(timeout()), this, SLOT(spawnObstacle()));
 	_spawnRate->start(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
