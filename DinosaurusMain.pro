@@ -27,6 +27,7 @@ HEADERS += header/controller.h \
            header/mainMenu.h \
            header/meteorite.h \
            header/bullet.h \
+		   header/leaderboard.h \ 
            header/cloud.h
 SOURCES += src/controller.cpp \
            src/level.cpp \
@@ -37,6 +38,7 @@ SOURCES += src/controller.cpp \
            src/bullet.cpp \
            src/mainMenu.cpp \
            src/dinosaurus.cpp \
+		   src/leaderboard.cpp \
            src/cloud.cpp
 
 QT += widgets

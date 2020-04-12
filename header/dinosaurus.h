@@ -27,7 +27,7 @@ public slots:
 private:
 	QMainWindow* _mainWindow;
 	Level* _level;
-	Leaderboard* _leaderboard;
+	LeaderboardTable* _leaderboard;
 };
 
 #endif // !H_DINOSAURUS
