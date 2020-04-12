@@ -1,7 +1,7 @@
 
-#include "header/Bullet.h"
+#include "header/bullet.h"
 #include"header/obstacle.h"
-#include "header/Meteorite.h"
+#include "header/meteorite.h"
 #include"header/level.h"
 #include <QTimer>
 
@@ -9,7 +9,7 @@ Bullet::Bullet(int x, int y) {
 	// drew the rect
 	//setRect(x, y, 50, 10);
 
-	QPixmap imageBullet("fireball.png");
+	QPixmap imageBullet("assets/fireball.png");
 	//QPixmap playerSized = imagePlayer.scaled(width, height);
 	setPos(x, y);
 	setPixmap(imageBullet);

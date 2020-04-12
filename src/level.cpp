@@ -1,10 +1,7 @@
 #include "header/level.h"
-#include "header/Meteorite.h"
 #include <QFont>
 #include <QBrush>
 #include <QImage>
-//Se débarasser de screen buffer. Remplacer par une fonction d'affichage succéssive.
-//Changer Usleep() par un Thread.sleep()
 
 Score::Score(QGraphicsItem* parent) : QGraphicsTextItem(parent)
 {
@@ -30,6 +27,7 @@ Level::Level()
 	_player = new Player();
 	_spawnRate = new QTimer();
 	_scrollSpeed = new QTimer();
+	_spawnCloud = new QTimer();
 	_spawnRateMeteorite = new QTimer();
 	_player->setFlag(QGraphicsItem::ItemIsFocusable);
 	_player->setPos(50, SCREEN_HEIGHT - _player->height);
@@ -40,13 +38,16 @@ Level::Level()
 	connect(_spawnRateMeteorite, SIGNAL(timeout()), this, SLOT(spawnMeteorite()));
 	_spawnRateMeteorite->start(rand() % METEORITE_SPAWN_TIME + METEORITE_MIN_SPAWN_TIME);
 	
+	connect(_spawnCloud, SIGNAL(timeout()), this, SLOT(spawnCloud()));
+	_spawnCloud->start(2000);
+
 	_scrollSpeed->start(OBSTACLE_DEFAULT_SPEED);
 	_scene->addItem(_score);
 	_scene->addItem(_player);
 	_scene->setSceneRect(0, 0, SCREEN_WIDTH-2, SCREEN_HEIGHT-2);
 
 	//add a background
-	setBackgroundBrush(QBrush(QImage("background1.png")));
+	setBackgroundBrush(QBrush(QImage("assets/background1.png")));
 
 	setScene(_scene);
 	setFixedSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -60,6 +61,7 @@ Level::~Level()
 {
 
 }
+
 void Level::spawnMeteorite()
 {
 	Meteorite* newMeteorite = new Meteorite();
@@ -81,12 +83,17 @@ void Level::spawnMeteorite()
 	}
 
 	newMeteorite->setSpeed(5);
-	newMeteorite->setPos(SCREEN_WIDTH, 0);
+	newMeteorite->setPos(SCREEN_WIDTH, rand() % (SCREEN_HEIGHT / 4));
 
 	connect(_scrollSpeed, SIGNAL(timeout()), newMeteorite, SLOT(move()));
 	_scene->addItem(newMeteorite);
 	_spawnRateMeteorite->setInterval(rand() % METEORITE_SPAWN_TIME + METEORITE_MIN_SPAWN_TIME);
 
+}
+void Level::spawnCloud()
+{
+	Cloud * newCloud = new Cloud();
+	scene()->addItem(newCloud);
 }
 void Level::spawnObstacle()
 {

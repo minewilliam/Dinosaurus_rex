@@ -1,26 +1,21 @@
-#include "header/obstacle.h"
+#include "header/meteorite.h"
+#include "header/player.h"
 #include "header/level.h"
-#include "header/Meteorite.h"
-#include <fstream>
-#include <iostream>
-#include <string>
+#include <QGraphicsScene>
 
 Meteorite::Meteorite(int speed)
 {
 	_speed = speed;
 	init();
 }
-Meteorite::Meteorite(Texture texture, int speed)
-{
-	_speed = speed;
-	_texture = texture;
-	init();
-}
+
 void Meteorite::init()
 {
-	QPixmap imageCactus("Cactus1.png");
+	QPixmap imageCactus("assets/meteorite.png");
+	setPos(SCREEN_WIDTH, (SCREEN_HEIGHT / 8));
 	setPixmap(imageCactus);
 }
+
 void Meteorite::move() 
 {
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
@@ -36,6 +31,7 @@ void Meteorite::move()
 	}
 	setPos(x() - _speed, y()+ _speed*(0.57f));
 }
+
 void Meteorite::pushBack(Meteorite* element)
 {
 	Obstacle* lastObstacle = this;

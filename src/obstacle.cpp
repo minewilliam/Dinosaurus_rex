@@ -1,13 +1,6 @@
 #include "header/obstacle.h"
-#include "header/level.h"
-#include <fstream>
-#include <iostream>
-#include <string>
-
-Texture randomCactus()
-{
-    return cactusTextures[rand()%(cactusTexturesAmount)];
-}
+#include "header/player.h"
+#include <QGraphicsScene>
 
 Obstacle::Obstacle(int speed)
 {
@@ -15,17 +8,10 @@ Obstacle::Obstacle(int speed)
 	init();
 }
 
-Obstacle::Obstacle(Texture texture, int speed)
-{
-	_speed = speed;
-    _texture = texture;
-	init();
-}
-
 void Obstacle::init()
 {
 	//setRect(0, 0, width, height);
-	QPixmap imageCactus("Cactus1.png");
+	QPixmap imageCactus("assets/Cactus1.png");
 	//QPixmap playerSized = imagePlayer.scaled(width, height);
 	setPixmap(imageCactus);
 

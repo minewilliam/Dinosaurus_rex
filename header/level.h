@@ -1,5 +1,9 @@
 #ifndef LEVEL_H
 #define LEVEL_H
+
+#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 800
+
 #define OBSTACLE_DEFAULT_SPEED 19
 #define OBSTACLE_SPAWN_TIME 2500
 #define OBSTACLE_MIN_SPAWN_TIME 1000
@@ -11,11 +15,10 @@
 #include <QGraphicsView>
 #include <QtWidgets>
 #include <QTimer>
-#include "game2d.h"
-#include "terrain.h"
 #include "player.h"
 #include "obstacle.h"
-#include "header/Meteorite.h"
+#include "meteorite.h"
+#include "cloud.h"
 
 class Score : public QGraphicsTextItem
 {
@@ -27,8 +30,8 @@ public slots:
 	void incrementScore();
 
 private:
-	QTimer* _scoreCounter;
 	int _score = 0;
+	QTimer* _scoreCounter;
 };
 
 class Level : public QGraphicsView
@@ -42,18 +45,18 @@ public:
 public slots:
 	void spawnObstacle();
 	void spawnMeteorite();
+	void spawnCloud();
+
 private:
-	
 	Score* _score;
     Player* _player;
+	Obstacle* _obstacle = nullptr;
+	Meteorite* _Meteorite = nullptr;
 
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
-	Obstacle* _obstacle = nullptr;
 	QTimer *_spawnRateMeteorite;
-	Meteorite* _Meteorite = nullptr;
-
-    //Terrain* _terrain;
+	QTimer * _spawnCloud;
 };
 
 #endif
