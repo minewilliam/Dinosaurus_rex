@@ -1,26 +1,23 @@
-#include "header/obstacle.h"
+#include "header/meteorite.h"
 #include "header/player.h"
+#include "header/level.h"
 #include <QGraphicsScene>
 
-Obstacle::Obstacle(int speed)
+Meteorite::Meteorite(int speed)
 {
 	_speed = speed;
 	init();
 }
 
-void Obstacle::init()
+void Meteorite::init()
 {
-	//setRect(0, 0, width, height);
-	QPixmap imageCactus("assets/Cactus1.png");
-	//QPixmap playerSized = imagePlayer.scaled(width, height);
+	QPixmap imageCactus("assets/meteorite.png");
+	setPos(SCREEN_WIDTH, (SCREEN_HEIGHT / 8));
 	setPixmap(imageCactus);
-
 }
 
-void Obstacle::move()
+void Meteorite::move() 
 {
-	//verify a collision between obstacle and player
-		//list of collinding items
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
 
 	// if it's the player destroy player and remove obstacle from scene
@@ -32,10 +29,10 @@ void Obstacle::move()
 			delete collidingObstacles[i];
 		}
 	}
-	setPos(x() - _speed, y());
+	setPos(x() - _speed, y()+ _speed*(0.57f));
 }
 
-void Obstacle::pushBack(Obstacle* element)
+void Meteorite::pushBack(Meteorite* element)
 {
 	Obstacle* lastObstacle = this;
 	while (lastObstacle->next != nullptr) lastObstacle = lastObstacle->next;

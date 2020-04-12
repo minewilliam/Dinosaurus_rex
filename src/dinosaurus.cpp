@@ -4,7 +4,6 @@
 DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 {
 	_mainWindow = new QMainWindow();
-	_level = new Level();
 	// set up mainmenu
 	MainMenuWidget* mainmenu = new MainMenuWidget();
 	_mainWindow->setCentralWidget(mainmenu);

@@ -4,7 +4,8 @@
 
 TEMPLATE = vcapp
 TARGET = DinosaurusMain
-#INCLUDEPATH += .
+#INCLUDEPATH += C:\Users\PHODMAN.DESKTOP-1VM7GFC\Desktop\New folder\S2-2020-GI\App7\Dinosaurus_rex
+INCLUDEPATH += C:\Users\faund\Desktop\Uni\S2\APP7\Problematique\Dinosaurus_rex
 
 # You can make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -17,23 +18,25 @@ CONFIG += warn_on qt debug windows console
 
 # Input
 HEADERS += header/controller.h \
-           header/game2d.h \
            header/level.h \
            header/obstacle.h \
            header/player.h \
-           header/terrain.h \
-	   header/list.h \
+           header/list.h \
            header/vecteur.h \
            header/dinosaurus.h \
-	   header/mainMenu.h
+           header/mainMenu.h \
+           header/meteorite.h \
+           header/bullet.h \
+           header/cloud.h
 SOURCES += src/controller.cpp \
-           src/game2d.cpp \
            src/level.cpp \
            src/main.cpp \
            src/obstacle.cpp \
            src/player.cpp \
-           src/terrain.cpp \
-	   src/dinosaurus.cpp \
-	   src/mainMenu.cpp	
+           src/meteorite.cpp \
+           src/bullet.cpp \
+           src/mainMenu.cpp \
+           src/dinosaurus.cpp \
+           src/cloud.cpp
 
 QT += widgets

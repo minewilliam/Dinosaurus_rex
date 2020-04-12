@@ -2,6 +2,7 @@
 #define H_DINOSAURUS
 
 #include "level.h"
+#include "leaderboard.h"
 #include <QApplication.h>
 #include <QtWidgets>
 #include <QMainWindow>
@@ -26,6 +27,7 @@ public slots:
 private:
 	QMainWindow* _mainWindow;
 	Level* _level;
+	Leaderboard* _leaderboard;
 };
 
 #endif // !H_DINOSAURUS
