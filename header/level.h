@@ -18,6 +18,7 @@
 #include "player.h"
 #include "obstacle.h"
 #include "meteorite.h"
+#include "cloud.h"
 
 class Score : public QGraphicsTextItem
 {
@@ -44,6 +45,7 @@ public:
 public slots:
 	void spawnObstacle();
 	void spawnMeteorite();
+	void spawnCloud();
 
 private:
 	Score* _score;
@@ -54,6 +56,7 @@ private:
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
 	QTimer *_spawnRateMeteorite;
+	QTimer * _spawnCloud;
 };
 
 #endif

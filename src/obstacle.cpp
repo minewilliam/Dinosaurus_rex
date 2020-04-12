@@ -11,7 +11,7 @@ Obstacle::Obstacle(int speed)
 void Obstacle::init()
 {
 	//setRect(0, 0, width, height);
-	QPixmap imageCactus("Cactus1.png");
+	QPixmap imageCactus("assets/Cactus1.png");
 	//QPixmap playerSized = imagePlayer.scaled(width, height);
 	setPixmap(imageCactus);
 

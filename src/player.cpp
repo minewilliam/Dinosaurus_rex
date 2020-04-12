@@ -7,7 +7,7 @@ Player::Player(QGraphicsItem* parent) : QGraphicsPixmapItem(parent)
 	_jumpAnimTimer = new QTimer();
 
 	//setRect(0, 0, width, height);
-	QPixmap imagePlayer("Dino.png");
+	QPixmap imagePlayer("assets/Dino.png");
 	//QPixmap playerSized = imagePlayer.scaled(width, height);
 
 	setPixmap(imagePlayer);
@@ -70,7 +70,7 @@ void Player::duck()
 	int xCoord = this->x();
 	int yCoord = this->y();
 	//this->setRect(0, 100-duckedHeight, width, duckedHeight);
-	QPixmap imagePlayer("Dino.png");
+	QPixmap imagePlayer("assets/Dino.png");
 	QPixmap playerSized = imagePlayer.scaled(QSize(width, duckedHeight));
 
 	setPos(x(),y()+(height-duckedHeight));
@@ -94,7 +94,7 @@ void Player::shoot()
 void Player::resize()
 {
 	//this->setRect(0, 0, width, height);
-	QPixmap imagePlayer("Dino.png");
+	QPixmap imagePlayer("assets/Dino.png");
 	QPixmap playerSized = imagePlayer.scaled(QSize(width, height));
 
 
