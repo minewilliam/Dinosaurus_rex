@@ -19,61 +19,27 @@ MonLeaderboard::MonLeaderboard(QWidget *parent) : QWidget(parent)
 }
 PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
 {
+	QLabel *EmptyLabel = new QLabel();
+	EmptyLabel->setText("");
 	username = new QLineEdit();
 	username->setText("write username");
 	Play = new QPushButton("play");
 	Cancel = new QPushButton("cancel");
 	QVBoxLayout * layout1 = new QVBoxLayout();
 	QHBoxLayout * layout2 = new QHBoxLayout();
+	layout1->addWidget(EmptyLabel, 0, Qt::AlignLeft);
+	layout1->addWidget(EmptyLabel, 0, Qt::AlignLeft);
 	layout1->addWidget(username, 0, Qt::AlignHCenter);
-	layout2->addWidget(Play, 0, Qt::AlignHCenter);
-	layout2->addWidget(Cancel, 0, Qt::AlignHCenter);
+	layout2->addWidget(Play, 0, Qt::AlignBottom);
+	layout2->addWidget(Cancel, 0, Qt::AlignBottom);
 	layout1->addLayout(layout2);
+	layout1->addWidget(EmptyLabel, 0, Qt::AlignLeft);
 	setLayout(layout1);
 }
 MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 {
-	QSize MaxSize(400, 500);
-	QSize MinSize(400, 400);
-	QSize MaxSizeTitle(700, 200);
-	QSize MinSizeTitle(635, 100);
-	QSize MinSizeEmpty(900, 100);
-	QSize MaxSizeEmpty(1000, 200);
-	// set up main title
-	QLabel *Title = new QLabel();
-	QPixmap TitleImage("Title.png");
-	Title->setPixmap(TitleImage);
-	Title->setMinimumSize(MinSizeTitle);
-	Title->setMaximumSize(MaxSizeTitle);
-	//set up sun
-	QLabel *sun = new QLabel();
-	QPixmap SunImage("sun.png");
-	sun->setPixmap(SunImage);
-	sun->setMinimumSize(MinSize);
-	sun->setMaximumSize(MaxSize);
-	//set up nothing
-	QLabel *background = new QLabel();
-	QPixmap BackgroundImage("background.png");
-	background->setPixmap(BackgroundImage);
-	background->setMinimumSize(MinSizeTitle);
-	background->setMaximumSize(MaxSizeTitle);
-	// set up signature
-	QLabel *label = new QLabel();
-	QPixmap Signature("Signature.png");
-	label->setPixmap(Signature);
-	label->setMinimumSize(MinSizeEmpty);
-	label->setMaximumSize(MaxSizeEmpty);
-	// set up side pictures
-	QLabel *RexImage = new QLabel();
-	QLabel *ControlImage = new QLabel();
-	QPixmap Rexpixmap("REX.png");
-	QPixmap ControlPixmap("fourth control.png");
-	RexImage->setPixmap(Rexpixmap);
-	RexImage->setMinimumSize(MinSize);
-	RexImage->setMaximumSize(MaxSize);
-	ControlImage->setPixmap(ControlPixmap);
-	ControlImage->setMinimumSize(MinSize);
-	ControlImage->setMaximumSize(MaxSize);
+	QLabel *EmptyLabel = new QLabel();
+	EmptyLabel->setText("");
 	//set up play button
 	buttonPlay = new QPushButton("Play");
 	buttonPlay->setStyleSheet("background-color: red;");
@@ -91,7 +57,7 @@ MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 	buttonQuit->setFont(font);
 	//
 	const QSize MinButtonSize = QSize(4, 2);
-	const QSize MaxButtonSize = QSize(300, 50);
+	const QSize MaxButtonSize = QSize(200, 40);
 	buttonPlay->setFixedSize(MaxButtonSize);
 	buttonLeaderBoard->setFixedSize(MaxButtonSize);
 	buttonQuit->setFixedSize(MaxButtonSize);
@@ -99,17 +65,12 @@ MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 	QHBoxLayout *layout1 = new QHBoxLayout;
 	QVBoxLayout *layout2 = new QVBoxLayout;
 	QVBoxLayout *layout3 = new QVBoxLayout;
-	layout0->addWidget(sun, 0, Qt::AlignHCenter);
-	layout0->addWidget(Title, 0, Qt::AlignHCenter);
-	layout0->addWidget(background, 0, Qt::AlignHCenter);
-	layout2->addLayout(layout0);
-	layout2->addLayout(layout1);
-	layout2->addWidget(label, 0, Qt::AlignHCenter);
-	layout1->addWidget(RexImage, 0, Qt::AlignHCenter);
-	layout1->addLayout(layout3);
+	layout2->addWidget(EmptyLabel,0,Qt::AlignLeft);
+	layout2->addLayout(layout3);
 	layout3->addWidget(buttonPlay, 0, Qt::AlignCenter);
 	layout3->addWidget(buttonLeaderBoard, 0, Qt::AlignCenter);
 	layout3->addWidget(buttonQuit, 0, Qt::AlignCenter);
-	layout1->addWidget(ControlImage, 0, Qt::AlignHCenter);
+	layout2->addWidget(EmptyLabel, 0, Qt::AlignCenter);
 	setLayout(layout2);
+	
 }

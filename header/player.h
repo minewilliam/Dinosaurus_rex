@@ -35,7 +35,7 @@ private:
 	int _floorHeight = 0;
 	float _yVector = 0.0f;
 	int _jumpFrameCount = 0;
-
+	char* _name;
 	const float _gravity = 1.0f;
 	const float _jumpImpulse = 24.0f;
 };
