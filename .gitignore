@@ -37,3 +37,7 @@ dinosaurus
 .vscode/settings.json
 
 debug/
+
+DinosaurusMain.vcxproj
+
+DinosaurusMain.vcxproj.filters

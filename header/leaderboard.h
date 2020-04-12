@@ -1,4 +1,6 @@
-#include <fstream>
+#ifndef LEADERBOARD_H
+#define LEADERBOARD_H
+
 #include "vecteur.h"
 #include <QObject>
 #include <QString>
@@ -59,3 +61,5 @@ private:
 	LeaderboardTable* _leaderboardTable;
 	QGraphicsScene* _leaderboardScene;
 };
+
+#endif
