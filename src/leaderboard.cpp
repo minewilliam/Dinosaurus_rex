@@ -143,6 +143,7 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 	{
 		selectRow(index);
 		_leaderboardTableModel.insert(_tableData[index]);
+		saveToFile(_filePath);
 	}
 }
 

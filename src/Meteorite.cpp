@@ -17,10 +17,12 @@ void Meteorite::move()
 	// if it's the player destroy player and remove obstacle from scene
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
 		if (typeid(*(collidingObstacles[i])) == typeid(Player)) {
-			playerCollision();
+			
 			//scene()->removeItem(collidingObstacles[i]);
 			//scene()->removeItem(this);
 			//delete collidingObstacles[i];
+			playerCollision();
+			return;
 		}
 	}
 	setPos(x() - _speed, y()+ _speed*(0.57f));

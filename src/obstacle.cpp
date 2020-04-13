@@ -22,14 +22,20 @@ void Obstacle::move()
 
 	// if it's the player destroy player and remove obstacle from scene
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
-		if (typeid(*(collidingObstacles[i])) == typeid(Player)) {
-			playerCollision();
+		if (typeid(*(collidingObstacles[i])) == typeid(Player)) 
+		{	
 			//scene()->removeItem(collidingObstacles[i]);
 			//scene()->removeItem(this);
+	
 			//delete collidingObstacles[i];
+			playerCollision();
+			return;
+			
 		}
 	}
 	setPos(x() - _speed, y());
+	
+	
 }
 
 void Obstacle::pushBack(Obstacle* element)

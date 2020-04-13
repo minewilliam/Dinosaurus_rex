@@ -27,7 +27,7 @@ void DinosaurusApp::Quit()
 }
 void DinosaurusApp::Play()
 {
-	PregameSetUP *MyPregameSetUP = new PregameSetUP();
+	MyPregameSetUP = new PregameSetUP();
 	//setwindowtitle
 	_mainWindow->setStyleSheet("background-image:url(backgroundControl.png);");
 	_mainWindow->setCentralWidget(MyPregameSetUP);
@@ -36,8 +36,6 @@ void DinosaurusApp::Play()
 }
 void DinosaurusApp::SetUpMenu() 
 {
-	delete _level;
-	_level = nullptr;
 	MainMenuWidget* mainmenu = new MainMenuWidget();
 	_mainWindow->setCentralWidget(mainmenu);
 	connect(mainmenu->buttonPlay, SIGNAL(clicked()), this, SLOT(Play()));
@@ -47,13 +45,37 @@ void DinosaurusApp::SetUpMenu()
 }
 void DinosaurusApp::SetUpGame() 
 {
+
 	_level = new Level();
+	_level->_name = MyPregameSetUP->username->text();
 	_mainWindow->setStyleSheet("background-image:url(background1.png);");
 	_mainWindow->setCentralWidget(_level);
-	connect(_level, SIGNAL(gameOver()), this, SLOT(SetUpMenu()));
+	connect(_level, SIGNAL(gameOver()), this, SLOT(GameOverScreen()));
+}
+void DinosaurusApp::GameOverScreen()
+{
+	int finalscore = _level->getScore();
+	QString playerName = _level->_name;
+	QString tmp = QString::number(finalscore);
+	delete _level;
+	_level = nullptr;
+	_mainWindow->setStyleSheet("background-image:url(assets/GameOverScreen.png)");
+	MonGameOverScreen *MyGameOverScreen = new MonGameOverScreen();
+	MyGameOverScreen->Score->setText(tmp);
+	_mainWindow->setCentralWidget(MyGameOverScreen);
+	connect(MyGameOverScreen->MainMenu, SIGNAL(clicked()), this, SLOT(SetUpMenu()));
+	LeaderboardEntry newEntry;
+	newEntry.score = finalscore;
+	newEntry.name = playerName;
+	_leaderboard->insert(newEntry);
+	
 }
 void DinosaurusApp::ActivateLeaderBoard() 
 {
-	MonLeaderboard *newLeaderBoard = new MonLeaderboard();
-	_mainWindow->setCentralWidget(newLeaderBoard);
+	MonLeaderboard *lead = new	MonLeaderboard();
+	lead->_theleaderboard = _leaderboard;
+	lead->setLeaderboard();
+	_mainWindow->setCentralWidget(lead);
+	_mainWindow->setStyleSheet("background-image:url(assets/LeaderboardBackGround.png)");
+	connect(lead->mainmenu, SIGNAL(clicked()), this, SLOT(SetUpMenu()));
 }

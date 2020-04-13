@@ -4,16 +4,30 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include "leaderboard.h"
+#include <qlabel.h>
 
 class MonLeaderboard : public QWidget
 {
 	Q_OBJECT
 public:
 	MonLeaderboard(QWidget *parent = 0);
-	//~MonLeaderboard();
+	~MonLeaderboard();
+	LeaderboardTable *_theleaderboard;
+	void setLeaderboard();
+	QPushButton *mainmenu;
+	QLabel *Title;
+
 };
-
-
+class MonGameOverScreen :public QWidget
+{
+	Q_OBJECT
+public:
+	MonGameOverScreen(QWidget *parent = 0);
+	~MonGameOverScreen();
+	QPushButton *MainMenu;
+	QLabel *Score;
+};
 class MainMenuWidget : public QWidget
 {
 	Q_OBJECT
