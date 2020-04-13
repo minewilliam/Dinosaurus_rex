@@ -26,8 +26,8 @@ Level::Level()
 	_score = new Score();
 	_player = new Player();
 	_spawnRate = new QTimer();
-	_scrollSpeed = new QTimer();
 	_spawnCloud = new QTimer();
+	_scrollSpeed = new QTimer();
 	_spawnRateMeteorite = new QTimer();
 	_player->setFlag(QGraphicsItem::ItemIsFocusable);
 	_player->setPos(50, SCREEN_HEIGHT - _player->getHeight());
@@ -60,12 +60,20 @@ Level::Level()
 
 Level::~Level()
 {
-
+	delete _score;
+	delete _player;
+	delete _obstacle;
+	delete _Meteorite;
+	delete _spawnRate;
+	delete _scrollSpeed;
+	delete _spawnRateMeteorite;
+	delete _spawnCloud;
 }
 
 void Level::spawnMeteorite()
 {
 	Meteorite* newMeteorite = new Meteorite();
+	connect(newMeteorite, SIGNAL(playerCollision()), this, SLOT(checkCollision()));
 	if (_Meteorite == nullptr)
 	{
 		_Meteorite = newMeteorite;
@@ -89,7 +97,6 @@ void Level::spawnMeteorite()
 	connect(_scrollSpeed, SIGNAL(timeout()), newMeteorite, SLOT(move()));
 	_scene->addItem(newMeteorite);
 	_spawnRateMeteorite->setInterval(rand() % METEORITE_SPAWN_TIME + METEORITE_MIN_SPAWN_TIME);
-
 }
 void Level::spawnCloud()
 {
@@ -98,8 +105,10 @@ void Level::spawnCloud()
 }
 void Level::spawnObstacle()
 {
-
 		Obstacle* newObstacle = new Obstacle();
+
+		connect(newObstacle, SIGNAL(playerCollision()), this, SLOT(checkCollision()));
+		
 		if (_obstacle == nullptr)
 		{
 			_obstacle = newObstacle;
@@ -123,6 +132,13 @@ void Level::spawnObstacle()
 		connect(_scrollSpeed, SIGNAL(timeout()), newObstacle, SLOT(move()));
 		_scene->addItem(newObstacle);
 		_spawnRate->setInterval(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
-	
-	
+}
+
+void Level::checkCollision()
+{
+	_spawnRateMeteorite->stop();
+	_spawnRate->stop();
+	_spawnCloud->stop();
+	_scrollSpeed->stop();
+	gameOver();
 }

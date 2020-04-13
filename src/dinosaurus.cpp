@@ -36,6 +36,8 @@ void DinosaurusApp::Play()
 }
 void DinosaurusApp::SetUpMenu() 
 {
+	delete _level;
+	_level = nullptr;
 	MainMenuWidget* mainmenu = new MainMenuWidget();
 	_mainWindow->setCentralWidget(mainmenu);
 	connect(mainmenu->buttonPlay, SIGNAL(clicked()), this, SLOT(Play()));
@@ -48,6 +50,7 @@ void DinosaurusApp::SetUpGame()
 	_level = new Level();
 	_mainWindow->setStyleSheet("background-image:url(background1.png);");
 	_mainWindow->setCentralWidget(_level);
+	connect(_level, SIGNAL(gameOver()), this, SLOT(SetUpMenu()));
 }
 void DinosaurusApp::ActivateLeaderBoard() 
 {

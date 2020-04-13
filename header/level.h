@@ -25,6 +25,8 @@ class Score : public QGraphicsTextItem
 	Q_OBJECT
 public:
 	Score(QGraphicsItem* parent = 0);
+	int getScore() { return _score; };
+	void stop() { _scoreCounter->stop(); };
 
 public slots:
 	void incrementScore();
@@ -41,10 +43,15 @@ public:
     Level();
     ~Level();
 	QGraphicsScene* _scene;
+	int getScore() { return _score->getScore(); };
+
+signals:
+	void gameOver();
 
 public slots:
 	void spawnObstacle();
 	void spawnMeteorite();
+	void checkCollision();
 	void spawnCloud();
 
 private:
@@ -55,8 +62,8 @@ private:
 
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
-	QTimer *_spawnRateMeteorite;
-	QTimer * _spawnCloud;
+	QTimer* _spawnRateMeteorite;
+	QTimer* _spawnCloud;
 };
 
 #endif

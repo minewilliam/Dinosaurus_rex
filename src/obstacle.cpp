@@ -10,11 +10,8 @@ Obstacle::Obstacle(int speed)
 
 void Obstacle::init()
 {
-	//setRect(0, 0, width, height);
 	QPixmap imageCactus("assets/Cactus1.png");
-	//QPixmap playerSized = imagePlayer.scaled(width, height);
 	setPixmap(imageCactus);
-
 }
 
 void Obstacle::move()
@@ -26,10 +23,10 @@ void Obstacle::move()
 	// if it's the player destroy player and remove obstacle from scene
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
 		if (typeid(*(collidingObstacles[i])) == typeid(Player)) {
-			scene()->removeItem(collidingObstacles[i]);
-			scene()->removeItem(this);
-
-			delete collidingObstacles[i];
+			playerCollision();
+			//scene()->removeItem(collidingObstacles[i]);
+			//scene()->removeItem(this);
+			//delete collidingObstacles[i];
 		}
 	}
 	setPos(x() - _speed, y());
