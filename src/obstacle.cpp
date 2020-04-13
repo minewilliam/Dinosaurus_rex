@@ -4,20 +4,15 @@
 
 Obstacle::Obstacle(int speed)
 {
+	_imageFile = "assets/Cactus1.png";
 	_speed = speed;
-	init();
-}
-
-void Obstacle::init()
-{
-	QPixmap imageCactus("assets/Cactus1.png");
-	setPixmap(imageCactus);
+ 	setPixmap(_imageFile);
 }
 
 void Obstacle::move()
 {
 	//verify a collision between obstacle and player
-		//list of collinding items
+	//list of colliding items
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
 
 	// if it's the player destroy player and remove obstacle from scene

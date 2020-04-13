@@ -1,13 +1,12 @@
 #include "header/meteorite.h"
 #include "header/player.h"
-#include "header/level.h"
 #include <QGraphicsScene>
 
-void Meteorite::init()
+Meteorite::Meteorite(int speed)
 {
-	QPixmap imageCactus("assets/meteorite.png");
-	setPos(SCREEN_WIDTH, (SCREEN_HEIGHT / 8));
-	setPixmap(imageCactus);
+	_imageFile = "assets/meteorite.png";
+	_speed = speed;
+	setPixmap(_imageFile);
 }
 
 void Meteorite::move() 

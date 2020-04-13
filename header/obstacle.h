@@ -4,6 +4,7 @@
 #include "list.h"
 #include <QGraphicsPixmapItem>
 #include <QObject>
+#include <QString>
 
 class Obstacle : public QObject, public List<Obstacle>, public QGraphicsPixmapItem
 {
@@ -22,7 +23,7 @@ public slots:
 	void move();
 
 protected:
-	void init();
 	int _speed;
+	QString _imageFile;
 };
 #endif

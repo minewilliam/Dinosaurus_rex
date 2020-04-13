@@ -7,11 +7,8 @@ class Meteorite : public Obstacle
 {
 	Q_OBJECT
 public:
-	Meteorite(int speed = 0) : Obstacle(speed) {};
+	Meteorite(int speed = 0);
 public slots:
 	void move();
-
-protected:
-	void init();
 };
 #endif
