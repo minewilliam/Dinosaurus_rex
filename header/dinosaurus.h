@@ -10,6 +10,7 @@
 #include <QMenuBar>
 #include <QLayout>
 #include <QObject>
+#include <QString>
 
 class DinosaurusApp : public QApplication
 {
@@ -27,6 +28,7 @@ public slots:
 private:
 	QMainWindow* _mainWindow;
 	Level* _level;
+	QString _name = "";
 	LeaderboardTable* _leaderboard;
 };
 
