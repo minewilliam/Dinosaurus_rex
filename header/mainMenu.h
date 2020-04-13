@@ -12,10 +12,10 @@ class MonLeaderboard : public QWidget
 	Q_OBJECT
 public:
 	MonLeaderboard(QWidget *parent = 0);
-	~MonLeaderboard();
-	LeaderboardTable *_theleaderboard;
-	void setLeaderboard();
-	QPushButton *mainmenu;
+	LeaderboardTable* _leaderboard;
+	void insert(LeaderboardEntry entry) { _leaderboard->insert(entry); };
+	QPushButton *mainMenuButton;
+	QVBoxLayout *layout;
 	QLabel *Title;
 
 };
@@ -34,10 +34,14 @@ class MainMenuWidget : public QWidget
 public:
 	MainMenuWidget(QWidget *parent = 0);
 	//~MainMenuWidget();
-	QGridLayout *layout;
+
+	QLabel *EmptyLabel;
 	QPushButton *buttonPlay;
 	QPushButton *buttonLeaderBoard;
 	QPushButton *buttonQuit;
+private:	
+	QVBoxLayout *layout2;
+	QVBoxLayout *layout3;
 };
 
 class PregameSetUP : public QWidget

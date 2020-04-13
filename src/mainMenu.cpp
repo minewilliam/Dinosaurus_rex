@@ -15,19 +15,11 @@
 
 MonLeaderboard::MonLeaderboard(QWidget *parent) : QWidget(parent)
 {
+	_leaderboard = new LeaderboardTable();
 
-}
-MonLeaderboard::~MonLeaderboard()
-{
-	delete _theleaderboard;
-	delete mainmenu;
-	delete Title;
-}
-void MonLeaderboard::setLeaderboard()
-{
-	QVBoxLayout *layout = new QVBoxLayout();
+	layout = new QVBoxLayout();
 
-	_theleaderboard->setFixedSize(250, 300);
+	_leaderboard->setFixedSize(250, 300);
 
 	Title = new QLabel();
 	Title->setText("Leaderboard");
@@ -35,13 +27,14 @@ void MonLeaderboard::setLeaderboard()
 	font.setPointSize(20);
 	Title->setFont(font);
 
-	mainmenu = new QPushButton("Main Menu");
+	mainMenuButton = new QPushButton("Main Menu");
 
 	layout->addWidget(Title, 0, Qt::AlignCenter);
-	layout->addWidget(_theleaderboard, 0, Qt::AlignCenter);
-	layout->addWidget(mainmenu, 0, Qt::AlignCenter);
+	layout->addWidget(_leaderboard, 0, Qt::AlignCenter);
+	layout->addWidget(mainMenuButton, 0, Qt::AlignCenter);
 	setLayout(layout);
 }
+
 PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
 {
 	QLabel *EmptyLabel = new QLabel();
@@ -64,33 +57,30 @@ PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
 }
 MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 {
-	QLabel *EmptyLabel = new QLabel();
+	EmptyLabel = new QLabel();
 	EmptyLabel->setText("");
 	//set up play button
 	buttonPlay = new QPushButton("Play");
-	buttonPlay->setStyleSheet("background-color: red;");
+	buttonPlay->setStyleSheet("background-color: red");
 	QFont font;
 	font.setPointSize(14);
 	buttonPlay->setFont(font);
 	//set up leaderboard button
 	buttonLeaderBoard = new QPushButton("Leaderboard");
-	buttonLeaderBoard->setStyleSheet("background-color: red;");
+	buttonLeaderBoard->setStyleSheet("background-color: red");
 	buttonLeaderBoard->setFont(font);
 	// set up Quit button
 	buttonQuit = new QPushButton("Quit");
-	buttonQuit->setStyleSheet("background-color: red;");
+	buttonQuit->setStyleSheet("background-color: red");
 	buttonQuit->setFont(font);
-	buttonQuit->setFont(font);
+
 	//
-	const QSize MinButtonSize = QSize(4, 2);
-	const QSize MaxButtonSize = QSize(200, 40);
-	buttonPlay->setFixedSize(MaxButtonSize);
-	buttonLeaderBoard->setFixedSize(MaxButtonSize);
-	buttonQuit->setFixedSize(MaxButtonSize);
-	QHBoxLayout *layout0 = new QHBoxLayout;
-	QHBoxLayout *layout1 = new QHBoxLayout;
-	QVBoxLayout *layout2 = new QVBoxLayout;
-	QVBoxLayout *layout3 = new QVBoxLayout;
+	buttonPlay->setFixedSize(QSize(200, 40));
+	buttonQuit->setFixedSize(QSize(200, 40));
+	buttonLeaderBoard->setFixedSize(QSize(200, 40));
+	layout2 = new QVBoxLayout;
+
+	layout3 = new QVBoxLayout;
 	layout2->addWidget(EmptyLabel,0,Qt::AlignLeft);
 	layout2->addLayout(layout3);
 	layout3->addWidget(buttonPlay, 0, Qt::AlignCenter);

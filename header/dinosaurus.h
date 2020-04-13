@@ -30,9 +30,10 @@ public slots:
 	void GameOverScreen();
 private:
 	QMainWindow* _mainWindow;
-	
+	MonGameOverScreen* _myGameOverScreen;
+	MainMenuWidget* _mainmenu;
 	Level* _level;
-	LeaderboardTable* _leaderboard;
+	MonLeaderboard* _leaderBoardWidget;
 };
 
 #endif // !H_DINOSAURUS
