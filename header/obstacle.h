@@ -15,10 +15,13 @@ public:
 	int width = 50;
 	int height = 100;
 
+signals:
+	void playerCollision();
+
 public slots:
 	void move();
 
-private:
+protected:
 	void init();
 	int _speed;
 };

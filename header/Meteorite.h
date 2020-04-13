@@ -7,16 +7,11 @@ class Meteorite : public Obstacle
 {
 	Q_OBJECT
 public:
-	Meteorite(int speed = 0);
-	void setSpeed(int speed) { _speed = speed; };
-	void pushBack(Meteorite* element);
-	int width = 50;
-	int height = 100;
+	Meteorite(int speed = 0) : Obstacle(speed) {};
 public slots:
 	void move();
 
-private:
+protected:
 	void init();
-	int _speed;
 };
 #endif
