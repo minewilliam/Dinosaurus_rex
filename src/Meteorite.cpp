@@ -11,15 +11,13 @@ Meteorite::Meteorite(int speed)
 
 void Meteorite::move() 
 {
+	//verify a collision between obstacle and player
+	//list of colliding items
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
 
 	// if it's the player destroy player and remove obstacle from scene
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
 		if (typeid(*(collidingObstacles[i])) == typeid(Player)) {
-			
-			//scene()->removeItem(collidingObstacles[i]);
-			//scene()->removeItem(this);
-			//delete collidingObstacles[i];
 			playerCollision();
 			return;
 		}

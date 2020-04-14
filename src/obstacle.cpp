@@ -19,13 +19,8 @@ void Obstacle::move()
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
 		if (typeid(*(collidingObstacles[i])) == typeid(Player)) 
 		{	
-			//scene()->removeItem(collidingObstacles[i]);
-			//scene()->removeItem(this);
-	
-			//delete collidingObstacles[i];
 			playerCollision();
 			return;
-			
 		}
 	}
 	setPos(x() - _speed, y());
