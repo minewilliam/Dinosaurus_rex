@@ -7,12 +7,10 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-/*************************************************************************************/
-/*********************** Main application window for QSimulate ***********************/
-/*************************************************************************************/
+
 
 /************************************ constuctor *************************************/
-
+// Dans les constructeur suivant on voit le placement ainsi que l'instanciation des éléments nécessaire pour créé nos pages.
 MonLeaderboard::MonLeaderboard(QWidget *parent) : QWidget(parent)
 {
 	_leaderboard = new LeaderboardTable();
@@ -22,14 +20,18 @@ MonLeaderboard::MonLeaderboard(QWidget *parent) : QWidget(parent)
 	_leaderboard->setFixedSize(250, 300);
 
 	Title = new QLabel();
-	Title->setText("Leaderboard");
+	Title->setText("");
 	QFont font;
-	font.setPointSize(20);
+	font.setPointSize(24);
 	Title->setFont(font);
 
 	mainMenuButton = new QPushButton("Main Menu");
-
-	layout->addWidget(Title, 0, Qt::AlignCenter);
+	
+	font.setPointSize(14);
+	mainMenuButton->setFont(font);
+	mainMenuButton->setFixedSize(QSize(200, 40));
+	mainMenuButton->setStyleSheet("background-color: red");
+	layout->addWidget(Title, 0, Qt::AlignLeft);
 	layout->addWidget(_leaderboard, 0, Qt::AlignCenter);
 	layout->addWidget(mainMenuButton, 0, Qt::AlignCenter);
 	setLayout(layout);
@@ -40,10 +42,21 @@ PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
 	QLabel *EmptyLabel = new QLabel();
 	EmptyLabel->setText("");
 	username = new QLineEdit();
+	QFont font;
+	font.setPointSize(14);
 	username->setText("write username");
+	username->setFont(font);
+	username->setStyleSheet("background-color: red");
+	username->setFixedSize(200, 50);
 	
-	Play = new QPushButton("play");
-	Cancel = new QPushButton("cancel");
+	Play = new QPushButton("Play");
+	Play->setFont(font);
+	Play->setStyleSheet("background-color: red");
+	Play->setFixedSize(QSize(200, 40));
+	Cancel = new QPushButton("Cancel");
+	Cancel->setFont(font);
+	Cancel->setStyleSheet("background-color: red");
+	Cancel->setFixedSize(QSize(200, 40));
 	QVBoxLayout * layout1 = new QVBoxLayout();
 	QHBoxLayout * layout2 = new QHBoxLayout();
 	layout1->addWidget(EmptyLabel, 0, Qt::AlignLeft);
@@ -96,7 +109,7 @@ MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
 	QLabel *ScoreLabel = new QLabel();
 	ScoreLabel->setText("Your Score:");
 	QFont font;
-	font.setPointSize(20);
+	font.setPointSize(14);
 	ScoreLabel->setFont(font);
 	Score = new QLabel();
 	Score->setFont(font);
@@ -105,6 +118,9 @@ MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
 	QHBoxLayout * layout3 = new QHBoxLayout();
 	QHBoxLayout * layout4 = new QHBoxLayout();
 	MainMenu = new QPushButton("Main Menu");
+	font.setPointSize(14);
+	MainMenu->setFont(font);
+	MainMenu->setFixedSize(QSize(200, 40));
 	layout3->addWidget(EmptyLabel, 0, Qt::AlignLeft);
 	layout2->addWidget(EmptyLabel, 0, Qt::AlignLeft);
 	layout2->addWidget(EmptyLabel, 0, Qt::AlignLeft);
@@ -120,9 +136,36 @@ MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
 
 	setLayout(layout1);
 }
+/****************Destructor**************/
+//ici nous avons les destructeurs des différentes classes
+
 MonGameOverScreen::~MonGameOverScreen()
 {
 	delete MainMenu;
 	delete Score;
 }
+/* il y a une erreur generer avec ces constructeurs
+MonLeaderboard::~MonLeaderboard()
+{
+	delete _leaderboard;
+	delete mainMenuButton;
+	delete layout;
+	delete Title;
+}
+MainMenuWidget::~MainMenuWidget()
+{
+	delete EmptyLabel;
+	delete buttonPlay;
+	delete buttonLeaderBoard;
+	delete buttonQuit;
+	delete layout2;
+	delete layout3;
+}
+PregameSetUP::~PregameSetUP()
+{
+	delete username;
+	delete Play;
+	delete Cancel;
+}
+*/
 

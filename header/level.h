@@ -60,7 +60,8 @@ private:
     Player* _player;
 	Obstacle* _obstacle = nullptr;
 	Meteorite* _Meteorite = nullptr;
-	
+	int _obstaclecounter = 0;
+	int _intervalOfTime = 19;
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
 	QTimer* _spawnRateMeteorite;

@@ -16,6 +16,7 @@ Score::Score(QGraphicsItem* parent) : QGraphicsTextItem(parent)
 
 void Score::incrementScore()
 {
+
 	_score++;
 	setPlainText(QString("Score: ") + QString::number(_score));
 }
@@ -125,10 +126,10 @@ void Level::spawnObstacle()
 				_obstacle->pushBack(newObstacle);
 			}
 		}
+		
 
 		newObstacle->setSpeed(5);
 		newObstacle->setPos(SCREEN_WIDTH, SCREEN_HEIGHT - 100);
-
 		connect(_scrollSpeed, SIGNAL(timeout()), newObstacle, SLOT(move()));
 		_scene->addItem(newObstacle);
 		_spawnRate->setInterval(rand() % OBSTACLE_SPAWN_TIME + OBSTACLE_MIN_SPAWN_TIME);
