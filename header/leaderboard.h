@@ -30,6 +30,7 @@ public:
 	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 	QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 	void insert(LeaderboardEntry entry);
+	void overwriteData();
 private:
 	QString _tableData[ROWS][COLS];
 	int _nElements = 0;
@@ -41,8 +42,8 @@ public:
 	LeaderboardTable(QWidget* parent = 0);
 	~LeaderboardTable();
 	void insert(LeaderboardEntry entry);
-
 private:
+	void _insertAll();
 	void _insert(LeaderboardEntry entry);
 	std::string _filePath = "assets/Leaderboard";
 	LeaderboardTableModel _leaderboardTableModel;

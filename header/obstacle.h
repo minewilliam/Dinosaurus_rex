@@ -15,7 +15,6 @@ public:
 	void pushBack(Obstacle* element);
 	int width = 50;
 	int height = 100;
-
 signals:
 	void playerCollision();
 

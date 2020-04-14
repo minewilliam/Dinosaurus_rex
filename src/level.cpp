@@ -136,6 +136,7 @@ void Level::spawnObstacle()
 
 void Level::checkCollision()
 {
+	
 	_spawnRateMeteorite->stop();
 	_spawnRate->stop();
 	_spawnCloud->stop();

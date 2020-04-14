@@ -41,6 +41,11 @@ void LeaderboardTableModel::insert(LeaderboardEntry entry)
 	_nElements++;
 }
 
+void LeaderboardTableModel::overwriteData()
+{
+	_nElements = 0;
+}
+
 LeaderboardTable::LeaderboardTable(QWidget* parent) : QTableView(parent)
 {
 	setShowGrid(false);
@@ -95,17 +100,21 @@ void LeaderboardTable::loadFile(std::string filePath)
 
 		_insert(newEntry);
 	}
-
-	for (int j = 0; j < _tableData.size() && j < ROWS; j++)
-	{
-		_leaderboardTableModel.insert(_tableData[j]);
-	}
+	_insertAll();
 }
 
 void LeaderboardTable::insert(LeaderboardEntry entry)
 {
 	_written = true;
 	_insert(entry);
+}
+
+void LeaderboardTable::_insertAll()
+{
+	for (int j = 0; j < _tableData.size() && j < ROWS; j++)
+	{
+		_leaderboardTableModel.insert(_tableData[j]);
+	}
 }
 
 void LeaderboardTable::_insert(LeaderboardEntry entry)
@@ -141,8 +150,10 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 	_tableData[index].initialized = true;
 	if (_written)
 	{
+		_leaderboardTableModel.overwriteData();
+		_insertAll();
+		saveToFile(_filePath);
 		selectRow(index);
-		_leaderboardTableModel.insert(_tableData[index]);
 	}
 }
 

@@ -11,6 +11,7 @@
 #include <QLayout>
 #include <QObject>
 #include <QString>
+#include "mainMenu.h"
 
 class DinosaurusApp : public QApplication
 {
@@ -19,17 +20,20 @@ public:
 	DinosaurusApp(int &argc, char** argv);
 	~DinosaurusApp() {};
 	QMainWindow& getMainWindow() { return *_mainWindow; };
+	PregameSetUP *MyPregameSetUP;
 public slots:
 	void Play();
 	void SetUpGame();
 	void SetUpMenu();
 	void Quit();
 	void ActivateLeaderBoard();
+	void GameOverScreen();
 private:
 	QMainWindow* _mainWindow;
+	MonGameOverScreen* _myGameOverScreen;
+	MainMenuWidget* _mainmenu;
 	Level* _level;
-	QString _name = "";
-	LeaderboardTable* _leaderboard;
+	MonLeaderboard* _leaderBoardWidget;
 };
 
 #endif // !H_DINOSAURUS

@@ -19,6 +19,7 @@
 #include "obstacle.h"
 #include "meteorite.h"
 #include "cloud.h"
+#include <QString>
 
 class Score : public QGraphicsTextItem
 {
@@ -44,7 +45,7 @@ public:
     ~Level();
 	QGraphicsScene* _scene;
 	int getScore() { return _score->getScore(); };
-
+	QString _name;
 signals:
 	void gameOver();
 
@@ -59,7 +60,7 @@ private:
     Player* _player;
 	Obstacle* _obstacle = nullptr;
 	Meteorite* _Meteorite = nullptr;
-
+	
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
 	QTimer* _spawnRateMeteorite;
