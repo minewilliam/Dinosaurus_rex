@@ -156,17 +156,3 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 		selectRow(index);
 	}
 }
-
-Leaderboard::Leaderboard()
-{
-	_leaderboardScene = new QGraphicsScene();
-	_leaderboardTable = new LeaderboardTable();
-
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	_leaderboardScene->setSceneRect(0, 0, 1000, 800);
-	_leaderboardScene->addWidget(_leaderboardTable);
-
-	_leaderboardTable->show();
-	setScene(_leaderboardScene);
-}

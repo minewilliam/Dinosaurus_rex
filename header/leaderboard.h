@@ -52,15 +52,4 @@ private:
 	void loadFile(std::string filePath);
 	void saveToFile(std::string filePath);
 };
-
-class Leaderboard : public QGraphicsView
-{
-public:
-	Leaderboard();
-
-private:
-	LeaderboardTable* _leaderboardTable;
-	QGraphicsScene* _leaderboardScene;
-};
-
 #endif
