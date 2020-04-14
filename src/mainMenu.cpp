@@ -138,11 +138,13 @@ MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
 }
 /****************Destructor**************/
 //ici nous avons les destructeurs des différentes classes
+
 MonGameOverScreen::~MonGameOverScreen()
 {
 	delete MainMenu;
 	delete Score;
 }
+/* il y a une erreur generer avec ces constructeurs
 MonLeaderboard::~MonLeaderboard()
 {
 	delete _leaderboard;
@@ -165,4 +167,5 @@ PregameSetUP::~PregameSetUP()
 	delete Play;
 	delete Cancel;
 }
+*/
 

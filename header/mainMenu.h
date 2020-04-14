@@ -14,7 +14,7 @@ class MonLeaderboard : public QWidget
 public:
 	
 	MonLeaderboard(QWidget *parent = 0);
-	~MonLeaderboard();
+	//~MonLeaderboard();
 	void insert(LeaderboardEntry entry) { _leaderboard->insert(entry); };
 
 	LeaderboardTable* _leaderboard;
@@ -42,7 +42,7 @@ class MainMenuWidget : public QWidget
 	Q_OBJECT
 public:
 	MainMenuWidget(QWidget *parent = 0);
-	~MainMenuWidget();
+	//~MainMenuWidget();
 
 	QLabel *EmptyLabel;
 	QPushButton *buttonPlay;
@@ -58,7 +58,8 @@ class PregameSetUP : public QWidget
 	Q_OBJECT
 public:
 	PregameSetUP(QWidget *parent =0);
-	~PregameSetUp();
+	//~PregameSetUP();
+	
 	QLineEdit *username;
 	QPushButton * Play;
 	QPushButton * Cancel;
