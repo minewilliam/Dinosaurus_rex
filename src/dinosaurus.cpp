@@ -1,10 +1,11 @@
 #include "header/dinosaurus.h"
 #include "header/mainMenu.h"
 
+// Ici nous avons l'instanciation de la fenêtre principal 
 DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 {
 	_mainWindow = new QMainWindow();
-	// set up mainmenu
+	// set up menu principal
 	SetUpMenu();
 	_mainWindow->setFixedSize(800, 600);
 	_mainWindow->setStyleSheet("background-image:url(backgroundmainmenu1.png)");
@@ -14,6 +15,9 @@ DinosaurusApp::DinosaurusApp(int &argc, char** argv) : QApplication(argc, argv)
 	exec();
 	
 }
+// Ce qui suit sont les différentes slot de DinosaurusApp elles permettent de changer entre les différents menu 
+// chacune d'entre elle instancie proprement la classe nécessaire pour avoir l'affichage désirer et crée les connection nécessaire entre les boutons de la fenêtre et les slot 
+//DinosaurusApp pour passer au affichage disponible
 void DinosaurusApp::Quit() 
 {
 	QCoreApplication::quit();
