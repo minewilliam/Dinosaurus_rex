@@ -4,7 +4,10 @@
 #include "vecteur.h"
 #include <QObject>
 #include <QString>
+#include <QLabel>
 #include <QTableView>
+#include <QVBoxLayout>
+#include <QPushButton>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QAbstractTableModel>
@@ -51,5 +54,21 @@ private:
 	bool _written = false;
 	void loadFile(std::string filePath);
 	void saveToFile(std::string filePath);
+};
+
+class Leaderboard : public QWidget
+{
+	Q_OBJECT
+public:
+	Leaderboard(QWidget* parent = 0);
+
+	void insert(LeaderboardEntry entry) { _leaderboard->insert(entry); };
+
+	QPushButton* _mainMenuButton;
+
+private:
+	LeaderboardTable* _leaderboard;
+	QVBoxLayout* _layout;
+	QLabel* _title;
 };
 #endif

@@ -4,7 +4,8 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 
-class Cloud : public QObject, public QGraphicsPixmapItem {
+class Cloud : public QObject, public QGraphicsPixmapItem
+{
 	Q_OBJECT
 public:
 	Cloud();

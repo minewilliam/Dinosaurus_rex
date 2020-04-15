@@ -156,3 +156,29 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 		selectRow(index);
 	}
 }
+
+Leaderboard::Leaderboard(QWidget *parent) : QWidget(parent)
+{
+	_layout = new QVBoxLayout();
+	_leaderboard = new LeaderboardTable();
+	_mainMenuButton = new QPushButton("Main Menu");
+
+	_title = new QLabel("");
+	QFont font;
+
+	font.setPointSize(24);
+	_title->setFont(font);
+	font.setPointSize(14);
+
+	_leaderboard->setFixedSize(250, 300);
+
+	_mainMenuButton->setFont(font);
+	_mainMenuButton->setFixedSize(QSize(200, 40));
+	_mainMenuButton->setStyleSheet("background-color: red");
+
+	_layout->addWidget(_title, 0, Qt::AlignLeft);
+	_layout->addWidget(_leaderboard, 0, Qt::AlignCenter);
+	_layout->addWidget(_mainMenuButton, 0, Qt::AlignCenter);
+
+	setLayout(_layout);
+}

@@ -2,42 +2,12 @@
 
 #include <QMenuBar>
 #include <QStatusBar>
-#include <QtWidgets>
 #include <QLayout>
 #include <QHBoxLayout>
-#include <QVBoxLayout>
 
+// Dans les constructeurs suivant on voit le placement ainsi que l'instanciation des éléments nécessaires pour créer nos pages.
 
-
-/************************************ constuctor *************************************/
-// Dans les constructeur suivant on voit le placement ainsi que l'instanciation des éléments nécessaire pour créé nos pages.
-MonLeaderboard::MonLeaderboard(QWidget *parent) : QWidget(parent)
-{
-	_leaderboard = new LeaderboardTable();
-
-	layout = new QVBoxLayout();
-
-	_leaderboard->setFixedSize(250, 300);
-
-	Title = new QLabel();
-	Title->setText("");
-	QFont font;
-	font.setPointSize(24);
-	Title->setFont(font);
-
-	mainMenuButton = new QPushButton("Main Menu");
-	
-	font.setPointSize(14);
-	mainMenuButton->setFont(font);
-	mainMenuButton->setFixedSize(QSize(200, 40));
-	mainMenuButton->setStyleSheet("background-color: red");
-	layout->addWidget(Title, 0, Qt::AlignLeft);
-	layout->addWidget(_leaderboard, 0, Qt::AlignCenter);
-	layout->addWidget(mainMenuButton, 0, Qt::AlignCenter);
-	setLayout(layout);
-}
-
-PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
+PreGameSetupWidget::PreGameSetupWidget(QWidget *parent) : QWidget(parent)
 {
 	QLabel *EmptyLabel = new QLabel();
 	EmptyLabel->setText("");
@@ -68,6 +38,7 @@ PregameSetUP::PregameSetUP(QWidget *parent) : QWidget(parent)
 	layout1->addWidget(EmptyLabel, 0, Qt::AlignLeft);
 	setLayout(layout1);
 }
+
 MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 {
 	EmptyLabel = new QLabel();
@@ -103,7 +74,8 @@ MainMenuWidget::MainMenuWidget(QWidget *parent) : QWidget(parent)
 	setLayout(layout2);
 	
 }
-MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
+
+GameOverWidget::GameOverWidget(QWidget *parent) : QWidget(parent)
 {
 	QLabel *EmptyLabel = new QLabel();
 	QLabel *ScoreLabel = new QLabel();
@@ -136,36 +108,3 @@ MonGameOverScreen::MonGameOverScreen(QWidget *parent) : QWidget(parent)
 
 	setLayout(layout1);
 }
-/****************Destructor**************/
-//ici nous avons les destructeurs des différentes classes
-
-MonGameOverScreen::~MonGameOverScreen()
-{
-	delete MainMenu;
-	delete Score;
-}
-/* il y a une erreur generer avec ces constructeurs
-MonLeaderboard::~MonLeaderboard()
-{
-	delete _leaderboard;
-	delete mainMenuButton;
-	delete layout;
-	delete Title;
-}
-MainMenuWidget::~MainMenuWidget()
-{
-	delete EmptyLabel;
-	delete buttonPlay;
-	delete buttonLeaderBoard;
-	delete buttonQuit;
-	delete layout2;
-	delete layout3;
-}
-PregameSetUP::~PregameSetUP()
-{
-	delete username;
-	delete Play;
-	delete Cancel;
-}
-*/
-
