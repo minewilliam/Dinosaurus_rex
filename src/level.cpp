@@ -64,7 +64,7 @@ Level::~Level()
 	delete _score;
 	delete _player;
 	delete _obstacle;
-	delete _Meteorite;
+	delete _meteorite;
 	delete _spawnRate;
 	delete _scrollSpeed;
 	delete _spawnRateMeteorite;
@@ -75,20 +75,20 @@ void Level::spawnMeteorite()
 {
 	Meteorite* newMeteorite = new Meteorite();
 	connect(newMeteorite, SIGNAL(playerCollision()), this, SLOT(checkCollision()));
-	if (_Meteorite == nullptr)
+	if (_meteorite == nullptr)
 	{
-		_Meteorite = newMeteorite;
+		_meteorite = newMeteorite;
 	}
 	else
 	{
-		if (_Meteorite->x() < 0)
+		if (_meteorite->x() < 0)
 		{
-			delete _Meteorite;
-			_Meteorite = newMeteorite;
+			delete _meteorite;
+			_meteorite = newMeteorite;
 		}
 		else
 		{
-			_Meteorite->pushBack(newMeteorite);
+			_meteorite->pushBack(newMeteorite);
 		}
 	}
 

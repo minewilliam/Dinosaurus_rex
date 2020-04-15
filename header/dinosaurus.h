@@ -34,7 +34,7 @@ private:
 	PreGameSetupWidget* _preGameSetupWidget;
 	GameOverWidget* _gameOverWidget;
 	MainMenuWidget* _mainMenuWidget;
-	Leaderboard* _leaderBoardWidget;
+	Leaderboard* _leaderboardWidget;
 };
 
 #endif // !H_DINOSAURUS

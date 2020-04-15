@@ -55,7 +55,7 @@ void DinosaurusApp::setupGame()
 void DinosaurusApp::activateGameOver()
 {
 	_gameOverWidget = new GameOverWidget();
-	_leaderBoardWidget = new Leaderboard();
+	_leaderboardWidget = new Leaderboard();
 	int finalscore = _level->getScore();
 	QString playerName = _level->_name;
 	QString tmp = QString::number(finalscore);
@@ -69,16 +69,16 @@ void DinosaurusApp::activateGameOver()
 	LeaderboardEntry newEntry;
 	newEntry.score = finalscore;
 	newEntry.name = playerName;
-	_leaderBoardWidget->insert(newEntry);
+	_leaderboardWidget->insert(newEntry);
 	
 }
 
 void DinosaurusApp::activateLeaderBoard() 
 {
-	_leaderBoardWidget = new Leaderboard();
-	_mainWindow->setCentralWidget(_leaderBoardWidget);
+	_leaderboardWidget = new Leaderboard();
+	_mainWindow->setCentralWidget(_leaderboardWidget);
 	_mainWindow->setStyleSheet("background-image:url(assets/LeaderboardBackGround.png)");
-	connect(_leaderBoardWidget->_mainMenuButton, SIGNAL(clicked()), this, SLOT(setupMenu()));
+	connect(_leaderboardWidget->_mainMenuButton, SIGNAL(clicked()), this, SLOT(setupMenu()));
 }
 
 void DinosaurusApp::quit()

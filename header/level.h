@@ -59,13 +59,10 @@ private:
 	Score* _score;
     Player* _player;
 	Obstacle* _obstacle = nullptr;
-	Meteorite* _Meteorite = nullptr;
-	int _obstaclecounter = 0;
-	int _intervalOfTime = 19;
+	Meteorite* _meteorite = nullptr;
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
 	QTimer* _spawnRateMeteorite;
 	QTimer* _spawnCloud;
 };
-
 #endif
