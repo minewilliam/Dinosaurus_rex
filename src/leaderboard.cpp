@@ -41,6 +41,11 @@ void LeaderboardTableModel::insert(LeaderboardEntry entry)
 	_nElements++;
 }
 
+void LeaderboardTableModel::overwriteData()
+{
+	_nElements = 0;
+}
+
 LeaderboardTable::LeaderboardTable(QWidget* parent) : QTableView(parent)
 {
 	setShowGrid(false);
@@ -95,17 +100,21 @@ void LeaderboardTable::loadFile(std::string filePath)
 
 		_insert(newEntry);
 	}
-
-	for (int j = 0; j < _tableData.size() && j < ROWS; j++)
-	{
-		_leaderboardTableModel.insert(_tableData[j]);
-	}
+	_insertAll();
 }
 
 void LeaderboardTable::insert(LeaderboardEntry entry)
 {
 	_written = true;
 	_insert(entry);
+}
+
+void LeaderboardTable::_insertAll()
+{
+	for (int j = 0; j < _tableData.size() && j < ROWS; j++)
+	{
+		_leaderboardTableModel.insert(_tableData[j]);
+	}
 }
 
 void LeaderboardTable::_insert(LeaderboardEntry entry)
@@ -139,19 +148,37 @@ void LeaderboardTable::_insert(LeaderboardEntry entry)
 
 	_tableData[index] = entry;
 	_tableData[index].initialized = true;
-	if(_written) selectRow(index);
+	if (_written)
+	{
+		_leaderboardTableModel.overwriteData();
+		_insertAll();
+		saveToFile(_filePath);
+		selectRow(index);
+	}
 }
 
-Leaderboard::Leaderboard()
+Leaderboard::Leaderboard(QWidget *parent) : QWidget(parent)
 {
-	_leaderboardScene = new QGraphicsScene();
-	_leaderboardTable = new LeaderboardTable();
+	_layout = new QVBoxLayout();
+	_leaderboard = new LeaderboardTable();
+	_mainMenuButton = new QPushButton("Main Menu");
 
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	_leaderboardScene->setSceneRect(0, 0, 1000, 800);
-	_leaderboardScene->addWidget(_leaderboardTable);
+	_title = new QLabel("");
+	QFont font;
 
-	_leaderboardTable->show();
-	setScene(_leaderboardScene);
+	font.setPointSize(24);
+	_title->setFont(font);
+	font.setPointSize(14);
+
+	_leaderboard->setFixedSize(250, 300);
+
+	_mainMenuButton->setFont(font);
+	_mainMenuButton->setFixedSize(QSize(200, 40));
+	_mainMenuButton->setStyleSheet("background-color: red");
+
+	_layout->addWidget(_title, 0, Qt::AlignLeft);
+	_layout->addWidget(_leaderboard, 0, Qt::AlignCenter);
+	_layout->addWidget(_mainMenuButton, 0, Qt::AlignCenter);
+
+	setLayout(_layout);
 }

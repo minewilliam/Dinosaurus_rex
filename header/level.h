@@ -19,12 +19,15 @@
 #include "obstacle.h"
 #include "meteorite.h"
 #include "cloud.h"
+#include <QString>
 
 class Score : public QGraphicsTextItem
 {
 	Q_OBJECT
 public:
 	Score(QGraphicsItem* parent = 0);
+	int getScore() { return _score; };
+	void stop() { _scoreCounter->stop(); };
 
 public slots:
 	void incrementScore();
@@ -41,22 +44,25 @@ public:
     Level();
     ~Level();
 	QGraphicsScene* _scene;
+	int getScore() { return _score->getScore(); };
+	QString _name;
+signals:
+	void gameOver();
 
 public slots:
 	void spawnObstacle();
 	void spawnMeteorite();
+	void checkCollision();
 	void spawnCloud();
 
 private:
 	Score* _score;
     Player* _player;
 	Obstacle* _obstacle = nullptr;
-	Meteorite* _Meteorite = nullptr;
-
+	Meteorite* _meteorite = nullptr;
 	QTimer* _spawnRate;
 	QTimer* _scrollSpeed;
-	QTimer *_spawnRateMeteorite;
-	QTimer * _spawnCloud;
+	QTimer* _spawnRateMeteorite;
+	QTimer* _spawnCloud;
 };
-
 #endif

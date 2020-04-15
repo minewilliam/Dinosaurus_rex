@@ -4,35 +4,28 @@
 
 Obstacle::Obstacle(int speed)
 {
+	_imageFile = "assets/Cactus1.png";
 	_speed = speed;
-	init();
-}
-
-void Obstacle::init()
-{
-	//setRect(0, 0, width, height);
-	QPixmap imageCactus("assets/Cactus1.png");
-	//QPixmap playerSized = imagePlayer.scaled(width, height);
-	setPixmap(imageCactus);
-
+ 	setPixmap(_imageFile);
 }
 
 void Obstacle::move()
 {
 	//verify a collision between obstacle and player
-		//list of collinding items
+	//list of colliding items
 	QList<QGraphicsItem *> collidingObstacles = collidingItems();
 
 	// if it's the player destroy player and remove obstacle from scene
 	for (int i = 0, n = collidingObstacles.size(); i < n; ++i) {
-		if (typeid(*(collidingObstacles[i])) == typeid(Player)) {
-			scene()->removeItem(collidingObstacles[i]);
-			scene()->removeItem(this);
-
-			delete collidingObstacles[i];
+		if (typeid(*(collidingObstacles[i])) == typeid(Player)) 
+		{	
+			playerCollision();
+			return;
 		}
 	}
 	setPos(x() - _speed, y());
+	
+	
 }
 
 void Obstacle::pushBack(Obstacle* element)

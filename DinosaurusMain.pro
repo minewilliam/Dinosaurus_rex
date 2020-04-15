@@ -17,8 +17,7 @@ INCLUDEPATH += C:\Users\faund\Desktop\Uni\S2\APP7\Problematique\Dinosaurus_rex
 CONFIG += warn_on qt debug windows console
 
 # Input
-HEADERS += header/controller.h \
-           header/level.h \
+HEADERS += header/level.h \
            header/obstacle.h \
            header/player.h \
            header/list.h \
@@ -27,9 +26,9 @@ HEADERS += header/controller.h \
            header/mainMenu.h \
            header/meteorite.h \
            header/bullet.h \
+		   header/leaderboard.h \ 
            header/cloud.h
-SOURCES += src/controller.cpp \
-           src/level.cpp \
+SOURCES += src/level.cpp \
            src/main.cpp \
            src/obstacle.cpp \
            src/player.cpp \
@@ -37,6 +36,7 @@ SOURCES += src/controller.cpp \
            src/bullet.cpp \
            src/mainMenu.cpp \
            src/dinosaurus.cpp \
+		   src/leaderboard.cpp \
            src/cloud.cpp
 
 QT += widgets

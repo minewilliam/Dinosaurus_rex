@@ -10,24 +10,31 @@
 #include <QMenuBar>
 #include <QLayout>
 #include <QObject>
+#include <QString>
+#include "mainMenu.h"
 
 class DinosaurusApp : public QApplication
 {
 	Q_OBJECT
 public:
 	DinosaurusApp(int &argc, char** argv);
-	~DinosaurusApp() {};
 	QMainWindow& getMainWindow() { return *_mainWindow; };
+
 public slots:
-	void Play();
-	void SetUpGame();
-	void SetUpMenu();
-	void Quit();
-	void ActivateLeaderBoard();
+	void play();
+	void setupGame();
+	void setupMenu();
+	void quit();
+	void activateLeaderBoard();
+	void activateGameOver();
+
 private:
-	QMainWindow* _mainWindow;
 	Level* _level;
-	Leaderboard* _leaderboard;
+	QMainWindow* _mainWindow;
+	PreGameSetupWidget* _preGameSetupWidget;
+	GameOverWidget* _gameOverWidget;
+	MainMenuWidget* _mainMenuWidget;
+	Leaderboard* _leaderboardWidget;
 };
 
 #endif // !H_DINOSAURUS

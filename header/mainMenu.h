@@ -1,37 +1,49 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include <QGridLayout>
+#include "leaderboard.h"
+#include <QLabel>
+#include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QVBoxLayout>
 
-class MonLeaderboard : public QWidget
+// Ici sont présenté les différente classes pour construire nos menus
+
+// GameOverWidget est la classe qui permet de créer la page d'affichage de fin de partie
+class GameOverWidget :public QWidget
 {
 	Q_OBJECT
 public:
-	MonLeaderboard(QWidget *parent = 0);
-	//~MonLeaderboard();
+	GameOverWidget(QWidget *parent = 0);
+
+	QPushButton *MainMenu;
+	QLabel *Score;
 };
 
-
+//MainMenuWidget est la classe qui permet de créer l'affichage du menu principal
 class MainMenuWidget : public QWidget
 {
 	Q_OBJECT
 public:
 	MainMenuWidget(QWidget *parent = 0);
-	//~MainMenuWidget();
-	QGridLayout *layout;
+
+	QLabel *EmptyLabel;
 	QPushButton *buttonPlay;
 	QPushButton *buttonLeaderBoard;
 	QPushButton *buttonQuit;
+private:	
+	QVBoxLayout *layout2;
+	QVBoxLayout *layout3;
 };
 
-class PregameSetUP : public QWidget
+// PregameSetUP est la classe qui permet de créer l'affichage du pré-jeu
+class PreGameSetupWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	PregameSetUP(QWidget *parent =0);
-	//~PregameSetUP();
+	PreGameSetupWidget(QWidget *parent =0);
+	
 	QLineEdit *username;
 	QPushButton * Play;
 	QPushButton * Cancel;

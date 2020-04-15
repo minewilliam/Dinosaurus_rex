@@ -4,7 +4,10 @@
 #include "vecteur.h"
 #include <QObject>
 #include <QString>
+#include <QLabel>
 #include <QTableView>
+#include <QVBoxLayout>
+#include <QPushButton>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QAbstractTableModel>
@@ -30,6 +33,7 @@ public:
 	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 	QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 	void insert(LeaderboardEntry entry);
+	void overwriteData();
 private:
 	QString _tableData[ROWS][COLS];
 	int _nElements = 0;
@@ -41,8 +45,8 @@ public:
 	LeaderboardTable(QWidget* parent = 0);
 	~LeaderboardTable();
 	void insert(LeaderboardEntry entry);
-
 private:
+	void _insertAll();
 	void _insert(LeaderboardEntry entry);
 	std::string _filePath = "assets/Leaderboard";
 	LeaderboardTableModel _leaderboardTableModel;
@@ -52,14 +56,19 @@ private:
 	void saveToFile(std::string filePath);
 };
 
-class Leaderboard : public QGraphicsView
+class Leaderboard : public QWidget
 {
+	Q_OBJECT
 public:
-	Leaderboard();
+	Leaderboard(QWidget* parent = 0);
+
+	void insert(LeaderboardEntry entry) { _leaderboard->insert(entry); };
+
+	QPushButton* _mainMenuButton;
 
 private:
-	LeaderboardTable* _leaderboardTable;
-	QGraphicsScene* _leaderboardScene;
+	LeaderboardTable* _leaderboard;
+	QVBoxLayout* _layout;
+	QLabel* _title;
 };
-
 #endif
